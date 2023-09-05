@@ -1,3 +1,0 @@
-Misclassified samples: 14
-Training Accuracy: 0.87
-Test Accuracy: 0.69
