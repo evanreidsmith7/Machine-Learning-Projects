@@ -20,16 +20,13 @@ from sklearn.linear_model import Perceptron
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 
-# create a variable to store the location of the dataset
-DATASET_FILE_LOCATION = '../Data_User_Modeling_Dataset.xls'
+# create a variable to store the location of the dataset and output files
+DATASET_FILE_LOCATION =     r"datasets\Data_User_Modeling_Dataset.xls"
+RESULTS_LOG_LOCATION =      r"HW\HW1\SmithEvanEE4331HW1\Part1\ResultFiles\Part1Log.xlsx"
+PLOT_PNG_LOCATION =         r"HW\HW1\SmithEvanEE4331HW1\Part1\ResultFiles\Perceptron.png"
+RESULTS_ACCURACY_LOCATION = r"HW\HW1\SmithEvanEE4331HW1\Part1\ResultFiles\results.txt"
 
 # Load the traing data from the xls dataset file to a panda dataframe
-# training_pd = pd.read_excel("C:/Users/Owner/OneDrive - Texas State University/Desktop/EE4331ML/HW/HW1/Data_User_Modeling_Dataset.xls", sheet_name='Training_Data')
-#training_pd = pd.read_excel(r"C:\Users\evanr\OneDrive - Texas State University\Desktop\EE4331ML\HW\HW1\Data_User_Modeling_Dataset.xls", sheet_name='Training_Data')
-# Load the test data from the xls dataset file to a panda dataframe
-#test_pd = pd.read_excel(r"C:\Users\evanr\OneDrive - Texas State University\Desktop\EE4331ML\HW\HW1\Data_User_Modeling_Dataset.xls", sheet_name='Test_Data')
-
-
 training_pd = pd.read_excel(DATASET_FILE_LOCATION, sheet_name='Training_Data')
 test_pd = pd.read_excel(DATASET_FILE_LOCATION, sheet_name='Test_Data')
 
@@ -154,6 +151,9 @@ ppn1.fit(X_train_std, y_train)
 y_pred_train = ppn1.predict(X_train_std)
 # predict the labels of the test data
 y_pred_test = ppn1.predict(X_test_std)
+
+
+
 # ****************************************plot below****************************************************************************************************************************************************************************************
 
 def plot_decision_regions(X, y, classifier, test_idx=None, resolution=0.02):
@@ -173,7 +173,7 @@ def plot_decision_regions(X, y, classifier, test_idx=None, resolution=0.02):
 
     # Plot all the samples
     for idx, cl in enumerate(np.unique(y)):
-        plt.scatter(x=X[y == cl, 0], y=X[y == cl, 1], alpha=0.8, c=cmap(idx), marker=markers[idx], label=cl)
+        plt.scatter(x=X[y == cl, 0], y=X[y == cl, 1], alpha=0.8, color=cmap(idx), marker=markers[idx], label=cl)
 
     # Highlight test samples if test_idx is provided
     if test_idx is not None:
@@ -191,35 +191,12 @@ plt.ylabel('Feature 1 [standardized]')
 plt.legend()
 
 #Save plot ---> LEAP requires this part
-plt.savefig(r"C:\Users\evanr\OneDrive - Texas State University\Desktop\EE4331ML\HW\HW1\SmithEvanEE4331HW1\Part1\ResultFiles\Perceptron.png")
+plt.savefig(PLOT_PNG_LOCATION)
 # ****************************************plot above****************************************************************************************************************************************************************************************
 
 
 
 # ****************************************print to txt below****************************************************************************************************************************************************************************************
-'''
-# grab the top results
-top_train_accuracy = results_df['Train Accuracy'].max()
-top_test_accuracy = results_df['Test Accuracy'].max()
-
-# Create a DataFrame with the top accuracies
-top_accuracies_df = pd.DataFrame({
-    'Train Accuracy': [top_train_accuracy],
-    'Test Accuracy': [top_test_accuracy]
-})
-print(top_accuracies_df.shape)
-print(top_accuracies_df)
-
-# Format the DataFrame as a string without the index
-formatted_top_accuracies = top_accuracies_df.to_string(index=False)
-
-file_path = "C:\\Users\\Owner\\OneDrive - Texas State University\\Desktop\\EE4331ML\\HW\\HW1\\SmithEvanEE4331HW1\\Part1\\ResultFiles\\results.txt"
-# Write the formatted string to the text file
-with open(file_path, 'w') as f:
-    f.write(formatted_top_accuracies)
-'''
-# file path for the text file
-file_path = r"C:\Users\evanr\OneDrive - Texas State University\Desktop\EE4331ML\HW\HW1\SmithEvanEE4331HW1\Part1\ResultFiles\results.txt"
 
 #Print out the training and test accuracy values to a text file
 print('Misclassified samples: %d' % (y_test != y_pred_test).sum())
@@ -228,21 +205,18 @@ print('Training Accuracy: %.2f' % ppn1.score(X_train_std, y_train))
 print('Test Accuracy: %.2f' % ppn1.score(X_test_std, y_test))
 
 #Name of the text file
-with open(file_path, "w") as f:
+with open(RESULTS_ACCURACY_LOCATION, "w") as f:
     f.write('Misclassified samples: %d' % (y_test != y_pred_test).sum())
     f.write('\n')
     f.write('Training Accuracy: %.2f' % ppn1.score(X_train_std, y_train))
     f.write('\n')
     f.write('Test Accuracy: %.2f' % ppn1.score(X_test_std, y_test))
     f.write('\n')
-# ************************************************print to txt above*****************************************************************************************************************************************************************************
+# ************************************************print to txt above*********************************************************************************************************************************************************
 
 
 
-# ***********************************************print to excel below***********************************************************************************************************************************************************
-# file path for the excel file
-file_path = r"C:\Users\evanr\OneDrive - Texas State University\Desktop\EE4331ML\HW\HW1\SmithEvanEE4331HW1\Part1\ResultFiles\Part1Log.xlsx"
-file_path = r"SmithEvanEE4331HW1\Part1\ResultFiles\Part1Log.xlsx"
+# ***********************************************print to excel below********************************************************************************************************************************************************
 # Define the header information and metadata
 header_info = [
     {"item": "Name", "label": "Evan"},
@@ -258,51 +232,6 @@ header_df = pd.DataFrame(header_info)
 # add the top 10 results to the header dataframe
 header_df = pd.concat([header_df, results_df], ignore_index=True)
 
-with pd.ExcelWriter(file_path) as writer:
+with pd.ExcelWriter(RESULTS_LOG_LOCATION) as writer:
     header_df.to_excel(writer, index=False)
-
-
-
-'''
-# Define the path to the Excel file
-output_file_path = "C:/Users/Owner/OneDrive - Texas State University/Desktop/EE4331ML/HW/HW1/SmithEvanEE4331HW1/Part1/Part1Log.xlsx"
-
-# Create a Pandas Excel writer using xlsxwriter as the engine
-writer = pd.ExcelWriter(output_file_path, engine='xlsxwriter')
-
-# Define the header information and metadata
-header_info = [
-    {"Name": "Evan"},
-    {"Last Name": "Smith"},
-    {"Homework": "1"},
-    {"Due": "9/7/2022"},
-    {"technique": "perceptron"},
-]
-
-# Create a DataFrame for header information
-header_df = pd.DataFrame(header_info)
-
-# Write the header information to the Excel file
-header_df.to_excel(writer, sheet_name='Sheet1', startrow=0, startcol=0, header=False, index=False)
-header_df.to_excel(writer, sheet_name='Sheet1', startrow=header_df.shape[0] + 2, startcol=0, header=False, index=False)
-
-# Write the results to the Excel file
-results_df.to_excel(writer, sheet_name='Sheet1', startrow=header_df.shape[0] + 4, index=False)
-
-# Get the xlsxwriter workbook and worksheet objects
-workbook = writer.book
-worksheet = writer.sheets['Sheet1']
-
-# Add formatting to the header information
-header_format = workbook.add_format({'bold': True})
-worksheet.set_row(0, None, header_format)
-worksheet.set_row(header_df.shape[0] + 2, None, header_format)
-
-# Close the Pandas Excel writer and save the file
-writer.save()
-
-print(f"Results written to {output_file_path}")
-
-
-'''
 # print to excel ABOVE ***************************************************************************************************************************************************************************************************************************
