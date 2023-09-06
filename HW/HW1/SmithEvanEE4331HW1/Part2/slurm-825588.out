@@ -1,0 +1,24 @@
+Starting at Wed Sep  6 10:29:27 CDT 2023
+Running on hosts: compute-117
+Running on 1 nodes.
+Running on 1 processors.
+Current working directory is /home/ers131/Machine-Learning-Projects/HW/HW1/SmithEvanEE4331HW1/Part2
+   Test Number  ... Test Accuracy
+4            5  ...      0.358621
+7            8  ...      0.358621
+5            6  ...      0.351724
+1            2  ...      0.344828
+2            3  ...      0.344828
+3            4  ...      0.344828
+0            1  ...      0.317241
+8            9  ...      0.317241
+6            7  ...      0.289655
+9           10  ...      0.282759
+
+[10 rows x 4 columns]
+{'C': 0.1, 'max_iter': 100, 'penalty': 'l2', 'solver': 'liblinear'}
+Misclassified samples: 95
+Accuracy: 0.34
+Training Accuracy: 0.38
+Test Accuracy: 0.34
+Program finished with exit code 0 at: Wed Sep  6 10:29:30 CDT 2023

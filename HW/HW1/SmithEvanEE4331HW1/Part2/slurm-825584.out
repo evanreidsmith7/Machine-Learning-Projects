@@ -1,0 +1,23 @@
+Starting at Wed Sep  6 10:21:30 CDT 2023
+Running on hosts: compute-117
+Running on 1 nodes.
+Running on 1 processors.
+Current working directory is /home/ers131/Machine-Learning-Projects/HW/HW1/SmithEvanEE4331HW1/Part2
+Traceback (most recent call last):
+  File "/home/ers131/Machine-Learning-Projects/HW/HW1/SmithEvanEE4331HW1/Part2/hw1-log-reg.py", line 33, in <module>
+    training_pd = pd.read_excel(DATASET_FILE_LOCATION, sheet_name='Training_Data')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/pandas/io/excel/_base.py", line 504, in read_excel
+    io = ExcelFile(
+         ^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/pandas/io/excel/_base.py", line 1563, in __init__
+    ext = inspect_excel_format(
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/pandas/io/excel/_base.py", line 1419, in inspect_excel_format
+    with get_handle(
+         ^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/pandas/io/common.py", line 872, in get_handle
+    handle = open(handle, ioargs.mode)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'datasets\\Data_User_Modeling_Dataset.xls'
+Program finished with exit code 1 at: Wed Sep  6 10:21:33 CDT 2023

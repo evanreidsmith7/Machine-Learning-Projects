@@ -43,10 +43,25 @@ X_train_df = training_pd.filter(['STG', 'PEG']).copy()
 training_pd['label'] = training_pd[' UNS']
 test_pd['label'] = test_pd[' UNS']
 
+
+
+# label encode the labels
+from sklearn.preprocessing import LabelEncoder
+le = LabelEncoder()
+training_pd['label'] = le.fit_transform(training_pd['label'])
+test_pd['label'] = le.fit_transform(test_pd['label'])
+
+
+
+'''
 # convert the label strings to numbers
 training_pd['label'] = training_pd['label'].map({'very_low': 0, 'Low': 1, 'Middle': 2, 'High': 3})
 test_pd['label'] = test_pd['label'].map({'Very Low': 0, 'Low': 1, 'Middle': 2, 'High': 3})
-
+'''
+'''
+TRY TO CONVERT THEM TO A STRING ALL FOLLOWING THE SAME FORMAT
+THEN WE CAN TRY TO USE THE LABEL ENCODER TO CONVERT THEM TO NUMBERS
+'''
 # extract the labels we need into a panda dataframe 
 y_train_df = training_pd['label'].copy()
 y_test_df = test_pd['label'].copy()

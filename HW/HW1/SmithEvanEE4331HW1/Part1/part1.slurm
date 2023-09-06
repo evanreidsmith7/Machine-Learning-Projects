@@ -14,7 +14,7 @@ echo "Running on $SLURM_NNODES nodes."
 echo "Running on $SLURM_NPROCS processors."
 echo "Current working directory is `pwd`"
 
-# go to my current directory
+# go to my current WORKING directory
 cd /home/ers131/Machine-Learning-Projects
 
 python $PYTHON_SCRIPT
