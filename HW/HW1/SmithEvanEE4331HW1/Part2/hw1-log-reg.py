@@ -205,8 +205,8 @@ y_combined=np.hstack((y_train,y_test))
 plot_decision_regions(X=X_combined_std, y=y_combined, classifier=lr1)
 
 #plot with labels and legend
-plt.xlabel('Feature 2 [Standardized]')
-plt.ylabel('Feature 1 [standardized]')
+plt.xlabel(X_train_df.columns[0])
+plt.ylabel(X_train_df.columns[1])
 plt.legend()
 
 #Save plot ---> LEAP requires this part
