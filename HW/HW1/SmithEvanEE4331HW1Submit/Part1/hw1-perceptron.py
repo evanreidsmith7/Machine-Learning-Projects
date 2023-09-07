@@ -21,10 +21,11 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 
 # create a variable to store the location of the dataset and output files
-DATASET_FILE_LOCATION =     r"datasets/Data_User_Modeling_Dataset.xls"
-RESULTS_LOG_LOCATION =      r"HW/HW1/SmithEvanEE4331HW1/Part1/ResultFiles/Part1Log.xlsx"
-PLOT_PNG_LOCATION =         r"HW/HW1/SmithEvanEE4331HW1/Part1/ResultFiles/Perceptron.png"
-RESULTS_ACCURACY_LOCATION = r"HW/HW1/SmithEvanEE4331HW1/Part1/ResultFiles/results.txt"
+# working directory is SmithEvanEE4331HW1Submit
+DATASET_FILE_LOCATION =     r"Data_User_Modeling_Dataset.xls"
+RESULTS_LOG_LOCATION =      r"ResultFiles/Part1Log.xlsx"
+PLOT_PNG_LOCATION =         r"ResultFiles/Perceptron.png"
+RESULTS_ACCURACY_LOCATION = r"ResultFiles/results.txt"
 
 # Load the traing data from the xls dataset file to a panda dataframe
 training_pd = pd.read_excel(DATASET_FILE_LOCATION, sheet_name='Training_Data')
