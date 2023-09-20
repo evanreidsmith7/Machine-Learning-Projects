@@ -1,4 +1,4 @@
-Training Accuracy: 0.26
-Testing Accuracy: 0.22
+Training Accuracy: 0.25
+Testing Accuracy: 0.23
 Best PCA Components: [[-0.64486773  0.60430818  0.3698043  -0.22692025 -0.17524044]
  [ 0.02927434 -0.07481643  0.53100588 -0.06648335  0.84092701]]

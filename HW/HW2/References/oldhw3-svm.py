@@ -43,6 +43,11 @@ from sklearn.preprocessing import LabelEncoder
 # Main_Lobby7.1
 # Sport_Hall_7.1
 
+
+###########################################################################################################################
+# Data Preprocessing
+###########################################################################################################################
+
 # Set the path of each of the folders we want to excract from
 Corridor_rm155_71_loc0000_path = 'datasets\Measurements_Upload\Measurements_Upload\Corridor_rm155_7.1\Loc_0000'
 Lab139_71_loc0000_path = 'datasets\Measurements_Upload\Measurements_Upload\Corridor_rm155_7.1\Loc_0000'
@@ -138,12 +143,15 @@ le = LabelEncoder()
 y = le.fit_transform(y)
 
 
+###########################################################################################################################
+# Dataset analysis
+###########################################################################################################################
+
+
 # standardize X
 sc = StandardScaler()
 sc.fit(X)
 X = sc.transform(X)
-
-
 
 # Splitting into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
@@ -173,14 +181,17 @@ grid_search_object = GridSearchCV(model, param_grid, cv=5)
 grid_search_object.fit(X_train_pca, y_train)
 
 # get the best esiimator and its test accuracy
-best_estimator = grid_search_object.best_estimator_
+model1 = grid_search_object.best_estimator_
 
+'''
 # get the best parameters
 best_parameters = grid_search_object.best_params_
 
 # lets give scv1 the best parameters
 model1 = SVC(
     C=best_parameters['C'], kernel='linear', random_state=42)
+
+'''
 
 # train the model
 model1.fit(X_train_pca, y_train)
@@ -267,5 +278,25 @@ print(best_features)
 with open('experiment_results.txt', 'w') as file:
     file.write(accuracy_text)
     file.write(best_features)
+
+'''
+
+'''
+
+# PCA: X_pca_2pc
+pca_2pc = PCA(n_components=2)
+X_pca_2pc = pca_2pc.fit_transform(X_std)
+
+colors = ['r', 'b', 'g', 'y']
+markers = ['s', 'x', 'o', '^']
+for l, c, m in zip(np.unique(y), colors, markers):
+    plt.scatter(X_pca_2pc[y == l, 0], \
+                X_pca_2pc[y == l, 1], \
+                c=c, label=l, marker=m)
+    
+plt.xlabel('PC 1')
+plt.ylabel('PC 2')
+plt.legend(loc='lower left')
+plt.savefig('HW\HW2\SmithEvanEE4331HW2\Part1\Results\pca_2pc.png')
 
 '''
