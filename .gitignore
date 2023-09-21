@@ -153,3 +153,7 @@ cython_debug/
 
 # ignore the giant dataset
 datasets/Measurements_Upload/
+datasets
+HW\HW2\References
+HW\HW1\References
+HW\HW2\SmithEvanEE4331HW2Submit

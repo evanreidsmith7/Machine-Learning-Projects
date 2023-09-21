@@ -1,0 +1,7 @@
+Starting at Wed Sep 20 23:52:43 CDT 2023
+Running on hosts: compute-117
+Running on 1 nodes.
+Running on 14 processors.
+Current working directory is /home/ers131/SmithEvanEE4331HW2Submit
+python: can't open file '/gpfs/home/ers131/SmithEvanEE4331HW2Submit/hw2-knn.py': [Errno 2] No such file or directory
+Program finished with exit code 2 at: Wed Sep 20 23:52:43 CDT 2023

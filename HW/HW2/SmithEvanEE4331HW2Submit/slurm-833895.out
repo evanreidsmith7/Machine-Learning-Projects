@@ -1,0 +1,11 @@
+Starting at Wed Sep 20 23:28:30 CDT 2023
+Running on hosts: compute-117
+Running on 1 nodes.
+Running on 14 processors.
+Current working directory is /home/ers131/SmithEvanEE4331HW2Submit
+Traceback (most recent call last):
+  File "/gpfs/home/ers131/SmithEvanEE4331HW2Submit/hw2-svm.py", line 109, in <module>
+    for filename in os.listdir(Lab139_71_loc0000_path):
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'datasets/Measurements_Upload/Lab139_7.1/Loc_0000'
+Program finished with exit code 1 at: Wed Sep 20 23:29:08 CDT 2023

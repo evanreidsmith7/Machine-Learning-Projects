@@ -1,10 +1,9 @@
-# The XOR non-linear example with random noise
-import matplotlib.pyplot as plt
-import numpy as np
+import os
+import sys
 
-np.random.seed(1)
-X_xor = np.random.randn(200, 2)
-y_xor = np.logical_xor(X_xor[:, 0] > 0,
-                       X_xor[:, 1] > 0)
-
-y_xor = np.where(y_xor, 1, -1)
+if "VIRTUAL_ENV" in os.environ:
+    print("In a virtual environment (using VIRTUAL_ENV).")
+elif sys.prefix != sys.base_prefix:
+    print("In a virtual environment (using sys.prefix and sys.base_prefix).")
+else:
+    print("Not in a virtual environment.")

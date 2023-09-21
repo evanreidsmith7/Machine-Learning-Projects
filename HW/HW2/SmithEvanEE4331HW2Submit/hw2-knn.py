@@ -1,7 +1,7 @@
 #************************************************************************************
 # Evan Smith
 # ML – HW#2
-# Filename: hw2-svm.py
+# Filename: hw2-knn.py
 # Due: Sept. 20, 2023
 #
 # Objective:
@@ -20,7 +20,7 @@
 '''
 #*************************************************************************************
 # Import libraries
-import os
+from sklearn.neighbors import KNeighborsClassifier
 from umap import UMAP
 import pandas as pd
 import numpy as np
@@ -31,8 +31,12 @@ from sklearn.manifold import TSNE
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import GridSearchCV
 from sklearn.preprocessing import StandardScaler
+from sklearn.linear_model import Perceptron
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
+import csv
+import os
+import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 from sklearn.preprocessing import LabelEncoder
@@ -77,15 +81,15 @@ def plot_decision_regions(X, y, clf, test_idx=None, resolution=0.02):
 ###########################################################################################################################
 
 # Set the path of each of the folders we want to excract from
-Corridor_rm155_71_loc0000_path = r'datasets\Measurements_Upload\Measurements_Upload\Corridor_rm155_7.1\Loc_0000'
-Lab139_71_loc0000_path =         r'datasets\Measurements_Upload\Measurements_Upload\Lab139_7.1\Loc_0000'
-Main_Lobby71_loc0000_path =      r'datasets\Measurements_Upload\Measurements_Upload\Main_Lobby_7.1\Loc_0000'
-Sport_Hall_71_loc0000_path =     r'datasets\Measurements_Upload\Measurements_Upload\Sport_Hall_7.1\Loc_0000'
+Corridor_rm155_71_loc0000_path = r'datasets/Measurements_Upload/Measurements_Upload/Corridor_rm155_7.1/Loc_0000'
+Lab139_71_loc0000_path =         r'datasets/Measurements_Upload/Measurements_Upload/Lab139_7.1/Loc_0000'
+Main_Lobby71_loc0000_path =      r'datasets/Measurements_Upload/Measurements_Upload/Main_Lobby_7.1/Loc_0000'
+Sport_Hall_71_loc0000_path =     r'datasets/Measurements_Upload/Measurements_Upload/Sport_Hall_7.1/Loc_0000'
 
-TEXT_FILE_LOCATION = r'HW\HW2\SmithEvanEE4331HW2\Part1\Results\part1results.txt'
-TSNE_LOCATION =      r'HW\HW2\SmithEvanEE4331HW2\Part1\Results\_tsne.png'
-UMAP_LOCATION =      r'HW\HW2\SmithEvanEE4331HW2\Part1\Results\_umap.png'
-PLOT_LOCATION =      r'HW\HW2\SmithEvanEE4331HW2\Part1\Results\_decisionregions.png'
+TEXT_FILE_LOCATION = 'p1part2results.txt'
+TSNE_LOCATION = 'p2_tsne.png'
+UMAP_LOCATION = 'p2_umap.png'
+PLOT_LOCATION = 'p2_decisionregions.png'
 # Create a dataframe to store the data
 combined_data = pd.DataFrame()
 
@@ -173,7 +177,6 @@ y = combined_data['label']
 # encode y
 le = LabelEncoder()
 y_encoded = le.fit_transform(y)
-'''
 ###########################################################################################################################
 # generate t-SNE and UMAP images
 ###########################################################################################################################
@@ -197,9 +200,9 @@ plt.ylabel('t-SNE feature 2')
 plt.title('2D t-SNE on Dataset')
 plt.savefig(TSNE_LOCATION)
 
+'''
 
-
-
+'''
 # Initialize UMAP
 umap_model = UMAP(n_neighbors=50, min_dist=1,n_components=2)
 # Run UMAP and get the transformed 2D representation
@@ -214,7 +217,8 @@ plt.ylabel('UMAP feature 2')
 plt.title('2D UMAP on Dataset')
 plt.savefig(UMAP_LOCATION)
 
-'''
+
+
 ###########################################################################################################################
 # standardize and normalize
 ###########################################################################################################################
@@ -238,8 +242,7 @@ X_train_norm, X_test_norm, y_train_norm, y_test_norm = train_test_split(X_norm, 
 ########################################################################################################################### 
 
 param_grid = {
-    'C': [0.1, 1, 10, 50],
-    'kernel': ['linear', 'rbf'],
+    'n_neighbors': [1, 3, 5, 7, 9, 11, 13, 15],
 }
 # Define a list of values to iterate through for n_components
 n_components_values = [2, 3]  # You can customize this list
@@ -266,16 +269,16 @@ for n_components in n_components_values:
             X_test_reduced = kpca.transform(X_test_std)
 
         # Create an SVM classifier
-        svm_classifier = SVC()
+        knn_classifier = KNeighborsClassifier()
         # Create GridSearchCV with the SVM classifier and hyperparameter grid
-        grid_search = GridSearchCV(estimator=svm_classifier, param_grid=param_grid, cv=5, scoring='accuracy',n_jobs=-1)
+        grid_search = GridSearchCV(estimator=knn_classifier, param_grid=param_grid, cv=5, scoring='accuracy',n_jobs=-1)
         # Fit the grid search to the dimensionality-reduced training data
         grid_search.fit(X_train_reduced, y_train_std)
         # Get the best hyperparameters
         best_params = grid_search.best_params_
         # Train the final SVM model with the best hyperparameters on the full training data
-        final_svm_model_std = SVC(**best_params)
-        final_svm_model_std.fit(X_train_reduced, y_train_std)
+        final_svm_model_std = KNeighborsClassifier(**best_params)
+        final_svm_model_std.fit(X_train_reduced, y_train_norm)
 
         # Evaluate the SVM model's performance on the transformed testing data
         test_accuracy = accuracy_score(y_test_std, final_svm_model_std.predict(X_test_reduced))
@@ -317,15 +320,15 @@ for n_components in n_components_values:
             X_train_reduced = kpca.fit_transform(X_train_norm)
             X_test_reduced = kpca.transform(X_test_norm)
         # Create an SVM classifier
-        svm_classifier = SVC()
+        knn_classifier = KNeighborsClassifier()
         # Create GridSearchCV with the SVM classifier and hyperparameter grid
-        grid_search = GridSearchCV(estimator=svm_classifier, param_grid=param_grid, cv=5, scoring='accuracy',n_jobs=-1)
+        grid_search = GridSearchCV(estimator=knn_classifier, param_grid=param_grid, cv=5, scoring='accuracy',n_jobs=-1)
         # Fit the grid search to the dimensionality-reduced training data
         grid_search.fit(X_train_reduced, y_train_norm)
         # Get the best hyperparameters
         best_params = grid_search.best_params_
         # Train the final SVM model with the best hyperparameters on the full training data
-        final_svm_model_norm = SVC(**best_params)
+        final_svm_model_norm = KNeighborsClassifier(**best_params)
         final_svm_model_norm.fit(X_train_reduced, y_train_norm)
         # Evaluate the SVM model's performance on the transformed testing data
         test_accuracy = accuracy_score(y_test_norm, final_svm_model_norm.predict(X_test_reduced))
@@ -347,9 +350,7 @@ print("Best Accuracy:", best_norm_accuracy)
 ###########################################################################################################################
 
 if (best_std_accuracy > best_norm_accuracy):
-    bestparams = final_svm_model_std.get_params()
-    best_classifier = SVC(**bestparams)
-
+    best_classifier = final_svm_model_std
     best_accuracy = best_std_accuracy
     best_technique = best_std_technique
     best_n_components = best_std_n_components
@@ -358,8 +359,7 @@ if (best_std_accuracy > best_norm_accuracy):
     y_train = y_train_std
     y_test = y_test_std
 else:
-    bestparams = final_svm_model_norm.get_params()
-    best_classifier = SVC(**bestparams)
+    best_classifier = final_svm_model_norm
     best_accuracy = best_norm_accuracy
     best_technique = best_norm_technique
     best_n_components = best_norm_n_components
@@ -369,7 +369,7 @@ else:
     y_test = y_test_norm
 
 txt_text = ''
-print(X_train.shape)
+
 if (best_technique == 'pca'):
     pca = PCA(n_components=best_n_components)
     X_train_reduced = pca.fit_transform(X_train)
@@ -385,7 +385,7 @@ elif (best_technique == 'kpca'):
     X_train_reduced = kpca.fit_transform(X_train)
     X_test_reduced = kpca.transform(X_test)
     txt_text = "Most Important Features for PCA:\n" + str(kpca.eigenvalues_) + "\n\n"
-print(X_train_reduced.shape)
+
 
 ###########################################################################################################################
 # text
@@ -404,13 +404,10 @@ print(f"Results saved to '{TEXT_FILE_LOCATION}'.")
 # plot
 ###########################################################################################################################
 # Assuming you have model_lda correctly trained on LDA-transformed data
-X_combined =np.vstack((X_test))
+X_combined =np.vstack((X_train,X_test))
 X_combined = X_combined.astype(float)
-best_classifier.fit(X_train_reduced[:, :2], y_train)
-print(X_test.shape)
-print(y_test.shape)
-print(X_train_reduced.shape)
-plot_decision_regions(X=X_test_reduced[:, :2], y=y_test, clf=best_classifier)
+best_classifier.fit(X, y_encoded)
+plot_decision_regions(X=X, y=y_encoded, clf=best_classifier)
 
 # Plot with labels and legend
 plt.xlabel('Feature 1')
