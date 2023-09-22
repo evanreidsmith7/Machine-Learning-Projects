@@ -86,6 +86,7 @@ TEXT_FILE_LOCATION = r'HW\HW2\SmithEvanEE4331HW2\Part1\Results\part1results.txt'
 TSNE_LOCATION =      r'HW\HW2\SmithEvanEE4331HW2\Part1\Results\_tsne.png'
 UMAP_LOCATION =      r'HW\HW2\SmithEvanEE4331HW2\Part1\Results\_umap.png'
 PLOT_LOCATION =      r'HW\HW2\SmithEvanEE4331HW2\Part1\Results\_decisionregions.png'
+
 # Create a dataframe to store the data
 combined_data = pd.DataFrame()
 
@@ -345,6 +346,8 @@ print("Best Accuracy:", best_norm_accuracy)
 ###########################################################################################################################
 # lets get the data reduced with the best technique
 ###########################################################################################################################
+print(X_train_reduced)
+print(X_train_norm)
 
 if (best_std_accuracy > best_norm_accuracy):
     bestparams = final_svm_model_std.get_params()
