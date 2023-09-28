@@ -7,59 +7,57 @@
 # Objective:
 #*************************************************************************************
 # Import libraries
-from umap import UMAP
+import os
+from matplotlib import pyplot as plt
 import pandas as pd
+from sklearn.model_selection import GridSearchCV
+from matplotlib.colors import ListedColormap
 import numpy as np
+from sklearn.preprocessing import LabelEncoder, MinMaxScaler
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
+from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import make_pipeline
+from sklearn.model_selection import StratifiedKFold
 from sklearn.decomposition import KernelPCA
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
-from sklearn.manifold import TSNE
-from sklearn.metrics import accuracy_score
-from sklearn.model_selection import GridSearchCV
-from sklearn.preprocessing import StandardScaler
-import matplotlib.pyplot as plt
-from matplotlib.colors import ListedColormap
-import os
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.svm import SVC
-from sklearn.preprocessing import LabelEncoder
-from sklearn.preprocessing import MinMaxScaler
+from sklearn.linear_model import LogisticRegression
 #from mlxtend.plotting import plot_decision_regions
 
 ##########################################################################################################################
 # plot func
 ###########################################################################################################################
-def plot_decision_regions(X, y, clf, test_idx=None, resolution=0.02):
-    markers = ('s', 'x', 'o', '^')  # Add a marker for the fourth class
-    colors = ('red', 'blue', 'lightgreen', 'purple')  # Add a color for the fourth class
-    cmap = ListedColormap(colors[:len(np.unique(y))])
+import matplotlib.pyplot as plt
+test_idx=None
+def plot_decision_regions(X,y,classifier,test_idx=None,resolution=0.02):
+	print('\nCreating the Plot Decision figure.......')
+	markers = ('s','x','o','D')
+	colors = ('red', 'blue', 'lightgreen','orange')
+	cmap = ListedColormap(colors[:len(np.unique(y))])
 
-    # Plot the decision surface
-    x1_min, x1_max = X[:, 0].min() - 1, X[:, 0].max() + 1
-    x2_min, x2_max = X[:, 1].min() - 1, X[:, 1].max() + 1
-    xx1, xx2 = np.meshgrid(np.arange(x1_min, x1_max, resolution), np.arange(x2_min, x2_max, resolution))
-    Z = clf.predict(np.array([xx1.ravel(), xx2.ravel()]).T)
-    lez = LabelEncoder()
-    Z = lez.fit_transform(Z)
-    Z = Z.reshape(xx1.shape)
-    Z = Z.astype(float)
-    plt.contourf(xx1, xx2, Z, alpha=0.4, cmap=cmap)
-    plt.xlim(xx1.min(), xx1.max())
-    plt.ylim(xx2.min(), xx2.max())
-    """ Here is the explanation for the code above:
-1. First, we determined the minimum and maximum values for the two features and used those feature vectors to create a pair of grid arrays xx1 and xx2 via the NumPy meshgrid function.
-2. Since we trained our logistic regression classifier on two feature dimensions, we need to flatten the grid arrays and create a matrix that has the same number of columns as the Iris training dataset so that we can use the predict method to predict the class labels Z of """
+	# Plot the decision surface
+	x1_min, x1_max = X[:, 0].min() - 1, X[:, 0].max() + 1
+	x2_min, x2_max = X[:, 1].min() - 1, X[:, 1].max() + 1
+	xx1, xx2 = np.meshgrid(np.arange(x1_min, x1_max, resolution),np.arange(x2_min, x2_max, resolution))
+	Z = classifier.predict(np.array([xx1.ravel(), xx2.ravel()]).T)
+	Z = Z.reshape(xx1.shape)
+	plt.contourf(xx1, xx2, Z, alpha=0.4, cmap=cmap)
+	plt.xlim(xx1.min(), xx1.max())
+	plt.ylim(xx2.min(), xx2.max())
 
-    # Plot all the samples
-    for idx, cl in enumerate(np.unique(y)):
-        plt.scatter(x=X[y == cl, 0], y=X[y == cl, 1], alpha=0.8, color=cmap(idx), marker=markers[idx], label=cl)
+	#Plot all the samples
+	X_test,y_test=X[test_idx,:],y[test_idx]
+	for idx,cl in enumerate(np.unique(y)):
+		plt.scatter(x=X[y==cl,0],y=X[y==cl,1],alpha=0.8,c=cmap(idx),marker=markers[idx],label=cl)
 
-    # Highlight test samples if test_idx is provided
-    if test_idx is not None:
-        X_test, y_test = X[test_idx, :], y[test_idx]
-        plt.scatter(X_test[:, 0], X_test[:, 1], c='', alpha=1.0, linewidths=1, marker='o', s=55, label='test set')
+	#Highlight test samples
+	if test_idx:
+		X_test,y_test =X[test_idx,:],y[test_idx]
 
+	plt.scatter(X_test[:,0],X_test[:,1],facecolors='none', edgecolors='black', alpha=1.0, linewidths=1, marker='o', s=55, label='test set')
+
+	print('\t\t\t\t........DONE!')
 ##########################################################################################################################
 # Data Preprocessing
 ###########################################################################################################################
@@ -160,3 +158,177 @@ y_encoded = le.fit_transform(y)
 
 print(y_encoded)
 print(X.head())
+
+
+sc = StandardScaler()
+X_std = sc.fit_transform(X)
+
+norm = MinMaxScaler()
+X_norm = norm.fit_transform(X)
+
+# Splitting into train and test sets
+X_train_std, X_test_std, y_train, y_test = train_test_split(X, y_encoded, test_size=0.20, stratify=y_encoded, random_state=1)
+X_norm_train, X_norm_test, y_norm_train, y_norm_test = train_test_split(X_norm, y_encoded, test_size=0.20, stratify=y_encoded, random_state=1)
+##########################################################################################################################
+# dim reduce
+###########################################################################################################################
+pca2 = PCA(n_components=2)
+pca3 = PCA(n_components=3)
+kpca2 = KernelPCA(n_components=2, kernel='rbf')
+kpca3 = KernelPCA(n_components=3, kernel='rbf')
+lda2 = LDA(n_components=2)
+lda3 = LDA(n_components=3)
+
+# fit and transform std
+X_train_std_pca2 = pca2.fit_transform(X_train_std)
+X_test_std_pca2 = pca2.transform(X_test_std)
+
+X_train_std_pca3 = pca3.fit_transform(X_train_std)
+X_test_std_pca3 = pca3.transform(X_test_std)
+
+X_train_std_kpca2 = kpca2.fit_transform(X_train_std)
+X_test_std_kpca2 = kpca2.transform(X_test_std)
+
+X_train_std_kpca3 = kpca3.fit_transform(X_train_std)
+X_test_std_kpca3 = kpca3.transform(X_test_std)
+
+X_train_std_lda2 = lda2.fit_transform(X_train_std, y_train)
+X_test_std_lda2 = lda2.transform(X_test_std)
+
+X_train_std_lda3 = lda3.fit_transform(X_train_std, y_train)
+X_test_std_lda3 = lda3.transform(X_test_std)
+
+# fit and transform norm
+X_train_norm_pca2 = pca2.fit_transform(X_norm_train)
+X_test_norm_pca2 = pca2.transform(X_norm_test)
+
+X_train_norm_pca3 = pca3.fit_transform(X_norm_train)
+X_test_norm_pca3 = pca3.transform(X_norm_test)
+
+X_train_norm_kpca2 = kpca2.fit_transform(X_norm_train)
+X_test_norm_kpca2 = kpca2.transform(X_norm_test)
+
+X_train_norm_kpca3 = kpca3.fit_transform(X_norm_train)
+X_test_norm_kpca3 = kpca3.transform(X_norm_test)
+
+X_train_norm_lda2 = lda2.fit_transform(X_norm_train, y_norm_train)
+X_test_norm_lda2 = lda2.transform(X_norm_test)
+
+##########################################################################################################################
+# PIPELINES
+###########################################################################################################################
+pipe1_std = make_pipeline(PCA(n_components=2), LogisticRegression(random_state=1))
+
+'''
+# STANDARDIZED
+pipe1_std = make_pipeline(StandardScaler(), PCA(n_components=2), LogisticRegression(random_state=1))
+pipe2_std = make_pipeline(StandardScaler(), LDA(n_components=2), LogisticRegression(random_state=1))    
+pipe3_std = make_pipeline(StandardScaler(), KernelPCA(n_components=2, kernel='rbf'), LogisticRegression(random_state=1))
+pipe4_std = make_pipeline(StandardScaler(), PCA(n_components=3), LogisticRegression(random_state=1))
+pipe5_std = make_pipeline(StandardScaler(), LDA(n_components=3), LogisticRegression(random_state=1))    
+pipe6_std = make_pipeline(StandardScaler(), KernelPCA(n_components=3, kernel='rbf'), LogisticRegression(random_state=1))
+
+# NORMALIZED
+pipe1_norm = make_pipeline(MinMaxScaler(), PCA(n_components=2), LogisticRegression(random_state=1))
+pipe2_norm = make_pipeline(MinMaxScaler(), LDA(n_components=2), LogisticRegression(random_state=1))    
+pipe3_norm = make_pipeline(MinMaxScaler(), KernelPCA(n_components=2, kernel='rbf'), LogisticRegression(random_state=1))
+pipe4_norm = make_pipeline(MinMaxScaler(), PCA(n_components=3), LogisticRegression(random_state=1))
+pipe5_norm = make_pipeline(MinMaxScaler(), LDA(n_components=3), LogisticRegression(random_state=1))    
+pipe6_norm = make_pipeline(MinMaxScaler(), KernelPCA(n_components=3, kernel='rbf'), LogisticRegression(random_state=1))
+'''
+##########################################################################################################################
+# GridSearchCV
+###########################################################################################################################
+'''
+gs = GridSearchCV(estimator=pipe_svc,
+ ... param_grid=param_grid,
+ ... scoring='accuracy',
+ ... cv=10,
+ ... n_jobs=-1)
+gs = gs.fit(X_train, y_train)
+print(gs.best_score_)
+0.984615384615
+print(gs.best_params_)
+'''
+param_grid = {
+    'logisticregression__penalty': [None, 'l2'],  # Regularization penalty (L1 or L2)
+    'logisticregression__C': [0.01, 0.1, 1.0, 10.0],  # Inverse of regularization strength
+    'logisticregression__solver': ['sag','lbfgs', 'saga'],  # Solver algorithms
+    'logisticregression__max_iter': [100, 250, 500]  # Maximum number of iterations
+}
+##########################################################################################################################
+# std gs
+###########################################################################################################################
+
+gs1_std = GridSearchCV(estimator=pipe1_std, param_grid=param_grid, scoring='accuracy', cv=10, n_jobs=-1)
+gs1_std.fit(X_train_std, y_train)
+print('\n\n\n')
+print("gs1_std")
+print(gs1_std.best_score_)
+print(gs1_std.best_params_)
+print('\n\n\n')
+
+'''
+gs2_std = GridSearchCV(estimator=pipe2_std, param_grid=param_grid, scoring='accuracy', cv=10, n_jobs=-1)
+gs2_std.fit(X_train, y_train)
+print("gs2_std")
+print(gs1_std.best_score_)
+print(gs1_std.best_params_)
+print('\n\n\n')
+
+gs3_std = GridSearchCV(estimator=pipe3_std, param_grid=param_grid, scoring='accuracy', cv=10, n_jobs=-1)
+gs3_std.fit(X_train, y_train)
+print("gs3_std")
+print(gs1_std.best_score_)
+print(gs1_std.best_params_)
+print('\n\n\n')
+
+##########################################################################################################################
+# norm gs
+###########################################################################################################################
+
+gs1_norm = GridSearchCV(estimator=pipe1_norm, param_grid=param_grid, scoring='accuracy', cv=10, n_jobs=-1)
+gs1_norm.fit(X_train, y_train)
+print("gs1_norm")
+print(gs1_norm.best_score_)
+print(gs1_norm.best_params_)
+print('\n\n\n')
+
+gs2_norm = GridSearchCV(estimator=pipe2_norm, param_grid=param_grid, scoring='accuracy', cv=10, n_jobs=-1)
+gs2_norm.fit(X_train, y_train)
+print("gs1_norm")
+print(gs1_norm.best_score_)
+print(gs1_norm.best_params_)
+print('\n\n\n')
+
+gs3_norm = GridSearchCV(estimator=pipe3_norm, param_grid=param_grid, scoring='accuracy', cv=10, n_jobs=-1)
+gs3_norm.fit(X_train, y_train)
+print("gs1_norm")
+print(gs1_norm.best_score_)
+print(gs1_norm.best_params_)
+print('\n\n\n')
+'''
+##########################################################################################################################
+# 
+###########################################################################################################################
+
+
+
+reduced_X_train = X_train_std_pca2
+reduced_X_test = X_test_std_pca2
+
+X_combined = np.vstack((reduced_X_train,reduced_X_test))
+y_combined = np.hstack((y_train,y_test))
+
+print(X_combined.shape)
+print(y_combined.shape)
+print(X_combined)
+
+# plot_decision_regions(X=X_combined, y=y_combined, classifier=gs1_std, test_idx=range(y_train.size, y_train.size + y_test.size))
+plot_decision_regions(X=reduced_X_test, y=y_test, classifier=gs1_std, test_idx=None, resolution=0.02)
+
+plt.xlabel('PC1')
+plt.ylabel('PC2')
+plt.legend(loc='lower left')
+plt.tight_layout()
+plt.savefig('Part1/results')
