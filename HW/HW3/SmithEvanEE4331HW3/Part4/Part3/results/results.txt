@@ -1,0 +1,15 @@
+
+Best Model Train Accuracy: 1.00
+Best Model Test Accuracy: 0.96
+Precision: 0.96
+
+Recall: 0.96
+
+F1: 0.96
+
+best_model:
+Pipeline(steps=[('classifier',
+                 DecisionTreeClassifier(criterion='entropy', max_depth=20,
+                                        max_features='sqrt'))])
+best_params:
+{'classifier__criterion': 'entropy', 'classifier__max_depth': 20, 'classifier__max_features': 'sqrt', 'classifier__min_samples_leaf': 1, 'classifier__min_samples_split': 2}
