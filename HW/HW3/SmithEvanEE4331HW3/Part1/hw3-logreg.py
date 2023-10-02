@@ -10,6 +10,8 @@
 import os
 from matplotlib import pyplot as plt
 import pandas as pd
+from sklearn.model_selection import learning_curve
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix, roc_curve, roc_auc_score, auc
 from sklearn.model_selection import GridSearchCV
 from matplotlib.colors import ListedColormap
 import numpy as np
@@ -18,46 +20,14 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.decomposition import PCA
 from sklearn.linear_model import LogisticRegression
-from sklearn.pipeline import make_pipeline
+from sklearn.pipeline import Pipeline, make_pipeline
 from sklearn.model_selection import StratifiedKFold
 from sklearn.decomposition import KernelPCA
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
 from sklearn.linear_model import LogisticRegression
+import seaborn as sns
 #from mlxtend.plotting import plot_decision_regions
 
-##########################################################################################################################
-# plot func
-###########################################################################################################################
-import matplotlib.pyplot as plt
-test_idx=None
-def plot_decision_regions(X,y,classifier,test_idx=None,resolution=0.02):
-	print('\nCreating the Plot Decision figure.......')
-	markers = ('s','x','o','D')
-	colors = ('red', 'blue', 'lightgreen','orange')
-	cmap = ListedColormap(colors[:len(np.unique(y))])
-
-	# Plot the decision surface
-	x1_min, x1_max = X[:, 0].min() - 1, X[:, 0].max() + 1
-	x2_min, x2_max = X[:, 1].min() - 1, X[:, 1].max() + 1
-	xx1, xx2 = np.meshgrid(np.arange(x1_min, x1_max, resolution),np.arange(x2_min, x2_max, resolution))
-	Z = classifier.predict(np.array([xx1.ravel(), xx2.ravel()]).T)
-	Z = Z.reshape(xx1.shape)
-	plt.contourf(xx1, xx2, Z, alpha=0.4, cmap=cmap)
-	plt.xlim(xx1.min(), xx1.max())
-	plt.ylim(xx2.min(), xx2.max())
-
-	#Plot all the samples
-	X_test,y_test=X[test_idx,:],y[test_idx]
-	for idx,cl in enumerate(np.unique(y)):
-		plt.scatter(x=X[y==cl,0],y=X[y==cl,1],alpha=0.8,c=cmap(idx),marker=markers[idx],label=cl)
-
-	#Highlight test samples
-	if test_idx:
-		X_test,y_test =X[test_idx,:],y[test_idx]
-
-	plt.scatter(X_test[:,0],X_test[:,1],facecolors='none', edgecolors='black', alpha=1.0, linewidths=1, marker='o', s=55, label='test set')
-
-	print('\t\t\t\t........DONE!')
 ##########################################################################################################################
 # Data Preprocessing
 ###########################################################################################################################
@@ -146,9 +116,13 @@ combined_data.dropna(inplace=True)
 
 # Splitting into X (features) and y (labels)
 X = combined_data.drop(columns=['label'])  # Assuming 'label' is the column containing your labels
+
 # Convert empty strings to NaN
 X[X == ''] = np.nan
+
+# Convert all values to float
 X = X.astype(float)
+
 #y = combined_data.drop(columns=[0,1,2,3,4])
 y = combined_data['label']
 
@@ -156,89 +130,92 @@ y = combined_data['label']
 le = LabelEncoder()
 y_encoded = le.fit_transform(y)
 
-print(y_encoded)
-print(X.head())
-
-
-sc = StandardScaler()
-X_std = sc.fit_transform(X)
-
-norm = MinMaxScaler()
-X_norm = norm.fit_transform(X)
-
-# Splitting into train and test sets
-X_train_std, X_test_std, y_train, y_test = train_test_split(X, y_encoded, test_size=0.20, stratify=y_encoded, random_state=1)
-X_norm_train, X_norm_test, y_norm_train, y_norm_test = train_test_split(X_norm, y_encoded, test_size=0.20, stratify=y_encoded, random_state=1)
-##########################################################################################################################
-# dim reduce
-###########################################################################################################################
-pca2 = PCA(n_components=2)
-pca3 = PCA(n_components=3)
-kpca2 = KernelPCA(n_components=2, kernel='rbf')
-kpca3 = KernelPCA(n_components=3, kernel='rbf')
-lda2 = LDA(n_components=2)
-lda3 = LDA(n_components=3)
-
-# fit and transform std
-X_train_std_pca2 = pca2.fit_transform(X_train_std)
-X_test_std_pca2 = pca2.transform(X_test_std)
-
-X_train_std_pca3 = pca3.fit_transform(X_train_std)
-X_test_std_pca3 = pca3.transform(X_test_std)
-
-X_train_std_kpca2 = kpca2.fit_transform(X_train_std)
-X_test_std_kpca2 = kpca2.transform(X_test_std)
-
-X_train_std_kpca3 = kpca3.fit_transform(X_train_std)
-X_test_std_kpca3 = kpca3.transform(X_test_std)
-
-X_train_std_lda2 = lda2.fit_transform(X_train_std, y_train)
-X_test_std_lda2 = lda2.transform(X_test_std)
-
-X_train_std_lda3 = lda3.fit_transform(X_train_std, y_train)
-X_test_std_lda3 = lda3.transform(X_test_std)
-
-# fit and transform norm
-X_train_norm_pca2 = pca2.fit_transform(X_norm_train)
-X_test_norm_pca2 = pca2.transform(X_norm_test)
-
-X_train_norm_pca3 = pca3.fit_transform(X_norm_train)
-X_test_norm_pca3 = pca3.transform(X_norm_test)
-
-X_train_norm_kpca2 = kpca2.fit_transform(X_norm_train)
-X_test_norm_kpca2 = kpca2.transform(X_norm_test)
-
-X_train_norm_kpca3 = kpca3.fit_transform(X_norm_train)
-X_test_norm_kpca3 = kpca3.transform(X_norm_test)
-
-X_train_norm_lda2 = lda2.fit_transform(X_norm_train, y_norm_train)
-X_test_norm_lda2 = lda2.transform(X_norm_test)
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.2, random_state=42)
 
 ##########################################################################################################################
 # PIPELINES
 ###########################################################################################################################
-pipe1_std = make_pipeline(PCA(n_components=2), LogisticRegression(random_state=1))
+# Create a pipeline
+pipe1 = Pipeline([
+    ('scaler', StandardScaler()),
+    ('reduce_dim', PCA()),  # You can change this to LDA or other dimensionality reduction techniques
+    ('classifier', LogisticRegression())
+])
+param_grid1 = {
+    'reduce_dim__n_components': [1, 2, 3],  # Number of components for PCA
+    'classifier__penalty': [None, 'l2'],  # Regularization penalty (L1 or L2)
+    'classifier__C': [0.01, 0.1, 1.0, 10.0],  # Inverse of regularization strength
+    'classifier__solver': ['sag','lbfgs', 'saga'],  # Solver algorithms
+    'classifier__max_iter': [100, 250, 500]  # Maximum number of iterations
+}
 
-'''
-# STANDARDIZED
-pipe1_std = make_pipeline(StandardScaler(), PCA(n_components=2), LogisticRegression(random_state=1))
-pipe2_std = make_pipeline(StandardScaler(), LDA(n_components=2), LogisticRegression(random_state=1))    
-pipe3_std = make_pipeline(StandardScaler(), KernelPCA(n_components=2, kernel='rbf'), LogisticRegression(random_state=1))
-pipe4_std = make_pipeline(StandardScaler(), PCA(n_components=3), LogisticRegression(random_state=1))
-pipe5_std = make_pipeline(StandardScaler(), LDA(n_components=3), LogisticRegression(random_state=1))    
-pipe6_std = make_pipeline(StandardScaler(), KernelPCA(n_components=3, kernel='rbf'), LogisticRegression(random_state=1))
+pipe2 = Pipeline([
+    ('scaler', StandardScaler()),
+    ('reduce_dim', LDA()),  # You can change this to LDA or other dimensionality reduction techniques
+    ('classifier', LogisticRegression())
+])
+param_grid2 = {
+    'reduce_dim__n_components': [1, 2, 3],  # Number of components for LDA
+    'classifier__penalty': [None, 'l2'],  # Regularization penalty (L1 or L2)
+    'classifier__C': [0.01, 0.1, 1.0, 10.0],  # Inverse of regularization strength
+    'classifier__solver': ['sag','lbfgs', 'saga'],  # Solver algorithms
+    'classifier__max_iter': [100, 250, 500]  # Maximum number of iterations
+}
 
-# NORMALIZED
-pipe1_norm = make_pipeline(MinMaxScaler(), PCA(n_components=2), LogisticRegression(random_state=1))
-pipe2_norm = make_pipeline(MinMaxScaler(), LDA(n_components=2), LogisticRegression(random_state=1))    
-pipe3_norm = make_pipeline(MinMaxScaler(), KernelPCA(n_components=2, kernel='rbf'), LogisticRegression(random_state=1))
-pipe4_norm = make_pipeline(MinMaxScaler(), PCA(n_components=3), LogisticRegression(random_state=1))
-pipe5_norm = make_pipeline(MinMaxScaler(), LDA(n_components=3), LogisticRegression(random_state=1))    
-pipe6_norm = make_pipeline(MinMaxScaler(), KernelPCA(n_components=3, kernel='rbf'), LogisticRegression(random_state=1))
-'''
+pipe3 = Pipeline([
+    ('scaler', StandardScaler()),
+    ('reduce_dim', KernelPCA(kernel='rbf')),  # You can change this to LDA or other dimensionality reduction techniques
+    ('classifier', LogisticRegression())
+])
+param_grid3 = {
+    'reduce_dim__n_components': [1, 2, 3],  # Number of components for LDA
+    'classifier__penalty': [None, 'l2'],  # Regularization penalty (L1 or L2)
+    'classifier__C': [0.01, 0.1, 1.0, 10.0],  # Inverse of regularization strength
+    'classifier__solver': ['sag','lbfgs', 'saga'],  # Solver algorithms
+    'classifier__max_iter': [100, 250, 500]  # Maximum number of iterations
+}
+
+pipe4 = Pipeline([
+    ('scaler', MinMaxScaler()),
+    ('reduce_dim', PCA()),  # You can change this to LDA or other dimensionality reduction techniques
+    ('classifier', LogisticRegression())
+])
+param_grid4 = {
+    'reduce_dim__n_components': [1, 2, 3],  # Number of components for PCA
+    'classifier__penalty': [None, 'l2'],  # Regularization penalty (L1 or L2)
+    'classifier__C': [0.01, 0.1, 1.0, 10.0],  # Inverse of regularization strength
+    'classifier__solver': ['sag','lbfgs', 'saga'],  # Solver algorithms
+    'classifier__max_iter': [100, 250, 500]  # Maximum number of iterations
+}
+
+pipe5 = Pipeline([
+    ('scaler', MinMaxScaler()),
+    ('reduce_dim', LDA()),  # You can change this to LDA or other dimensionality reduction techniques
+    ('classifier', LogisticRegression())
+])
+param_grid5 = {
+    'reduce_dim__n_components': [1, 2, 3],  # Number of components for LDA
+    'classifier__penalty': [None, 'l2'],  # Regularization penalty (L1 or L2)
+    'classifier__C': [0.01, 0.1, 1.0, 10.0],  # Inverse of regularization strength
+    'classifier__solver': ['sag','lbfgs', 'saga'],  # Solver algorithms
+    'classifier__max_iter': [100, 250, 500]  # Maximum number of iterations
+}
+
+pipe6 = Pipeline([
+    ('scaler', MinMaxScaler()),
+    ('reduce_dim', KernelPCA(kernel='rbf')),  # You can change this to LDA or other dimensionality reduction techniques
+    ('classifier', LogisticRegression())
+])
+param_grid6 = {
+    'reduce_dim__n_components': [1, 2, 3],  # Number of components for LDA
+    'classifier__penalty': [None, 'l2'],  # Regularization penalty (L1 or L2)
+    'classifier__C': [0.01, 0.1, 1.0, 10.0],  # Inverse of regularization strength
+    'classifier__solver': ['sag','lbfgs', 'saga'],  # Solver algorithms
+    'classifier__max_iter': [100, 250, 500]  # Maximum number of iterations
+}
 ##########################################################################################################################
 # GridSearchCV
-###########################################################################################################################
 '''
 gs = GridSearchCV(estimator=pipe_svc,
  ... param_grid=param_grid,
@@ -250,74 +227,183 @@ print(gs.best_score_)
 0.984615384615
 print(gs.best_params_)
 '''
-param_grid = {
-    'logisticregression__penalty': [None, 'l2'],  # Regularization penalty (L1 or L2)
-    'logisticregression__C': [0.01, 0.1, 1.0, 10.0],  # Inverse of regularization strength
-    'logisticregression__solver': ['sag','lbfgs', 'saga'],  # Solver algorithms
-    'logisticregression__max_iter': [100, 250, 500]  # Maximum number of iterations
-}
 ##########################################################################################################################
-# std gs
+
+gs1 = GridSearchCV(estimator=pipe1, param_grid=param_grid1, scoring='accuracy', cv=10, n_jobs=-1)
+gs1.fit(X_train, y_train)
+print("\n\n\n")
+print("\ngs1.best_score_:")
+print(gs1.best_score_)
+print("\ngs1.best_params_:")
+print(gs1.best_params_)
+print("\ngs1.best_estimator_:")
+print(gs1.best_estimator_)
+print("\n\n\n")
+
+gs2 = GridSearchCV(estimator=pipe2, param_grid=param_grid2, scoring='accuracy', cv=10, n_jobs=-1)
+gs2.fit(X_train, y_train)
+print("\n\n\n")
+print("\ngs2.best_score_:")
+print(gs2.best_score_)
+print("\ngs2.best_params_:")
+print(gs2.best_params_)
+print("\ngs2.best_estimator_:")
+print(gs2.best_estimator_)
+print("\n\n\n")
+
+gs3 = GridSearchCV(estimator=pipe3, param_grid=param_grid3, scoring='accuracy', cv=10, n_jobs=-1)
+gs3.fit(X_train, y_train)
+print("\n\n\n")
+print("\ngs3.best_score_:")
+print(gs3.best_score_)
+print("\ngs3.best_params_:")
+print(gs3.best_params_)
+print("\ngs3.best_estimator_:")
+print(gs3.best_estimator_)
+print("\n\n\n")
+
+gs4 = GridSearchCV(estimator=pipe4, param_grid=param_grid4, scoring='accuracy', cv=10, n_jobs=-1)
+gs4.fit(X_train, y_train)
+print("\n\n\n")
+print("\ngs4.best_score_:")
+print(gs4.best_score_)
+print("\ngs4.best_params_:")
+print(gs4.best_params_)
+print("\ngs4.best_estimator_:")
+print(gs4.best_estimator_)
+print("\n\n\n")
+
+gs5 = GridSearchCV(estimator=pipe5, param_grid=param_grid5, scoring='accuracy', cv=10, n_jobs=-1)
+gs5.fit(X_train, y_train)
+print("\n\n\n")
+print("\ngs5.best_score_:")
+print(gs5.best_score_)
+print("\ngs5.best_params_:")
+print(gs5.best_params_)
+print("\ngs5.best_estimator_:")
+print(gs5.best_estimator_)
+print("\n\n\n")
+
+gs6 = GridSearchCV(estimator=pipe6, param_grid=param_grid6, scoring='accuracy', cv=10, n_jobs=-1)
+gs6.fit(X_train, y_train)
+print("\n\n\n")
+print("\ngs6.best_score_:")
+print(gs6.best_score_)
+print("\ngs6.best_params_:")
+print(gs6.best_params_)
+print("\ngs6.best_estimator_:")
+print(gs6.best_estimator_)
+print("\n\n\n")
+##########################################################################################################################
+# find best model
 ###########################################################################################################################
 
-gs1_std = GridSearchCV(estimator=pipe1_std, param_grid=param_grid, scoring='accuracy', cv=10, n_jobs=-1)
-gs1_std.fit(X_train_std, y_train)
-print('\n\n\n')
-print("gs1_std")
-print(gs1_std.best_score_)
-print(gs1_std.best_params_)
-print('\n\n\n')
+# set best_model to the best_estimator_ from GridSearchCV that has the best score 
+# Compare the best scores from each grid search
+best_score1 = gs1.best_score_
+best_score2 = gs2.best_score_
+best_score3 = gs3.best_score_
+best_score4 = gs4.best_score_
+best_score5 = gs5.best_score_
+best_score6 = gs6.best_score_
 
+# Find the index of the grid search with the highest score
+best_index = np.argmax([best_score1, best_score2, best_score3, best_score4, best_score5, best_score6])
+
+# Set best_model to the best estimator from the grid search with the highest score
+if best_index == 0:
+    best_model = gs1.best_estimator_
+    best_params = gs1.best_params_
+elif best_index == 1:
+    best_model = gs2.best_estimator_
+    best_params = gs2.best_params_    
+elif best_index == 2:
+    best_model = gs3.best_estimator_
+    best_params = gs3.best_params_
+elif best_index == 3:
+    best_model = gs4.best_estimator_
+    best_params = gs4.best_params_
+elif best_index == 4:
+    best_model = gs5.best_estimator_
+    best_params = gs5.best_params_
+else:
+    best_model = gs6.best_estimator_
+    best_params = gs6.best_params_
+# Make predictions on the test data
+y_pred_train = best_model.predict(X_train)
+y_pred = best_model.predict(X_test)
+
+# Calculate and print the accuracy
+train_accuracy = accuracy_score(y_train, y_pred_train)
+accuracy = accuracy_score(y_test, y_pred)
+precision = precision_score(y_test, y_pred, average='weighted')
+recall = recall_score(y_test, y_pred, average='weighted')
+f1 = f1_score(y_test, y_pred, average='weighted')
+
+print(f"\n\n\n\nBest Model Train Accuracy: {train_accuracy:.2f}")
+print(f"Best Model Test Accuracy: {accuracy:.2f}")
+print(f"Precision: {precision:.2f}\n")
+print(f"Recall: {recall:.2f}\n")
+print(f"F1: {f1:.2f}\n")
+print("best_model")
+print(best_model)
+print("best_params:")
+print(best_params)
+
+
+##########################################################################################################################
+# txt file
+###########################################################################################################################
+
+# print to a txt file
+with open('Part1/results/results.txt', 'w') as file:
+    file.write(f"\nBest Model Train Accuracy: {train_accuracy:.2f}")
+    file.write(f"\nBest Model Test Accuracy: {accuracy:.2f}")
+    file.write(f"\nPrecision: {precision:.2f}\n")
+    file.write(f"\nRecall: {recall:.2f}\n")
+    file.write(f"\nF1: {f1:.2f}\n")
+    file.write("\nbest_model:\n")
+    file.write(str(best_model))
+    file.write("\nbest_params:\n")
+    file.write(str(best_params))
+
+
+##########################################################################################################################
+# TODO: plot decision regions
+###########################################################################################################################
 '''
-gs2_std = GridSearchCV(estimator=pipe2_std, param_grid=param_grid, scoring='accuracy', cv=10, n_jobs=-1)
-gs2_std.fit(X_train, y_train)
-print("gs2_std")
-print(gs1_std.best_score_)
-print(gs1_std.best_params_)
-print('\n\n\n')
 
-gs3_std = GridSearchCV(estimator=pipe3_std, param_grid=param_grid, scoring='accuracy', cv=10, n_jobs=-1)
-gs3_std.fit(X_train, y_train)
-print("gs3_std")
-print(gs1_std.best_score_)
-print(gs1_std.best_params_)
-print('\n\n\n')
+def plot_decision_regions(X,y,classifier,test_idx=None,resolution=0.02):
+	print('\nCreating the Plot Decision figure.......')
+	markers = ('s','x','o','D')
+	colors = ('red', 'blue', 'lightgreen','orange')
+	cmap = ListedColormap(colors[:len(np.unique(y))])
 
-##########################################################################################################################
-# norm gs
-###########################################################################################################################
+	# Plot the decision surface
+	x1_min, x1_max = X[:, 0].min() - 1, X[:, 0].max() + 1
+	x2_min, x2_max = X[:, 1].min() - 1, X[:, 1].max() + 1
+	xx1, xx2 = np.meshgrid(np.arange(x1_min, x1_max, resolution),np.arange(x2_min, x2_max, resolution))
+	Z = classifier.predict(np.array([xx1.ravel(), xx2.ravel()]).T)
+	Z = Z.reshape(xx1.shape)
+	plt.contourf(xx1, xx2, Z, alpha=0.4, cmap=cmap)
+	plt.xlim(xx1.min(), xx1.max())
+	plt.ylim(xx2.min(), xx2.max())
 
-gs1_norm = GridSearchCV(estimator=pipe1_norm, param_grid=param_grid, scoring='accuracy', cv=10, n_jobs=-1)
-gs1_norm.fit(X_train, y_train)
-print("gs1_norm")
-print(gs1_norm.best_score_)
-print(gs1_norm.best_params_)
-print('\n\n\n')
+	#Plot all the samples
+	X_test,y_test=X[test_idx,:],y[test_idx]
+	for idx,cl in enumerate(np.unique(y)):
+		plt.scatter(x=X[y==cl,0],y=X[y==cl,1],alpha=0.8,c=cmap(idx),marker=markers[idx],label=cl)
 
-gs2_norm = GridSearchCV(estimator=pipe2_norm, param_grid=param_grid, scoring='accuracy', cv=10, n_jobs=-1)
-gs2_norm.fit(X_train, y_train)
-print("gs1_norm")
-print(gs1_norm.best_score_)
-print(gs1_norm.best_params_)
-print('\n\n\n')
+	#Highlight test samples
+	if test_idx:
+		X_test,y_test =X[test_idx,:],y[test_idx]
 
-gs3_norm = GridSearchCV(estimator=pipe3_norm, param_grid=param_grid, scoring='accuracy', cv=10, n_jobs=-1)
-gs3_norm.fit(X_train, y_train)
-print("gs1_norm")
-print(gs1_norm.best_score_)
-print(gs1_norm.best_params_)
-print('\n\n\n')
-'''
-##########################################################################################################################
-# 
-###########################################################################################################################
+	plt.scatter(X_test[:,0],X_test[:,1],facecolors='none', edgecolors='black', alpha=1.0, linewidths=1, marker='o', s=55, label='test set')
+
+	print('\t\t\t\t........DONE!')
 
 
-
-reduced_X_train = X_train_std_pca2
-reduced_X_test = X_test_std_pca2
-
-X_combined = np.vstack((reduced_X_train,reduced_X_test))
+X_combined = np.vstack((X_train,X_test))
 y_combined = np.hstack((y_train,y_test))
 
 print(X_combined.shape)
@@ -325,10 +411,108 @@ print(y_combined.shape)
 print(X_combined)
 
 # plot_decision_regions(X=X_combined, y=y_combined, classifier=gs1_std, test_idx=range(y_train.size, y_train.size + y_test.size))
-plot_decision_regions(X=reduced_X_test, y=y_test, classifier=gs1_std, test_idx=None, resolution=0.02)
+plot_decision_regions(X=X_combined, y=y_combined, classifier=best_model, test_idx=None, resolution=0.01)
 
 plt.xlabel('PC1')
 plt.ylabel('PC2')
 plt.legend(loc='lower left')
 plt.tight_layout()
-plt.savefig('Part1/results')
+plt.savefig('Part1/results/decision_regions.png')
+plt.close()
+
+'''
+##########################################################################################################################
+# learning curves
+###########################################################################################################################
+# Create and save learning curves
+def plot_learning_curve(estimator, title, X, y, ylim=None, cv=None,
+                        n_jobs=None, train_sizes=np.linspace(.1, 1.0, 5)):
+    plt.figure(figsize=(8, 6))
+    plt.title(title)
+    if ylim is not None:
+        plt.ylim(*ylim)
+    plt.xlabel("Training examples")
+    plt.ylabel("Score")
+    train_sizes, train_scores, test_scores = learning_curve(
+        estimator, X, y, cv=cv, n_jobs=n_jobs, train_sizes=train_sizes)
+    train_scores_mean = np.mean(train_scores, axis=1)
+    train_scores_std = np.std(train_scores, axis=1)
+    test_scores_mean = np.mean(test_scores, axis=1)
+    test_scores_std = np.std(test_scores, axis=1)
+    plt.grid()
+
+    plt.fill_between(train_sizes, train_scores_mean - train_scores_std,
+                     train_scores_mean + train_scores_std, alpha=0.1,
+                     color="r")
+    plt.fill_between(train_sizes, test_scores_mean - test_scores_std,
+                     test_scores_mean + test_scores_std, alpha=0.1, color="g")
+    plt.plot(train_sizes, train_scores_mean, 'o-', color="r",
+             label="Training score")
+    plt.plot(train_sizes, test_scores_mean, 'o-', color="g",
+             label="Cross-validation score")
+
+    plt.legend(loc="best")
+    plt.savefig('Part1/results/learning_curve.png')
+    #plt.show()
+    plt.close()
+
+plot_learning_curve(best_model, "Learning Curve", X_train, y_train, cv=5, n_jobs=-1)
+
+##########################################################################################################################
+# training confusion matrix
+###########################################################################################################################
+# Create a confusion matrix for y_train
+confusion_train = confusion_matrix(y_train, y_pred_train)
+
+plt.figure(figsize=(8, 6))
+sns.heatmap(confusion_train, annot=True, fmt="d", cmap="Blues", annot_kws={"size": 16})
+plt.xlabel("Predicted")
+plt.ylabel("True")
+plt.title("Confusion Matrix y_train")
+plt.savefig('Part1/results/training_confusion_matrix.png')
+#plt.show()
+plt.close()
+
+##########################################################################################################################
+# test confusion matrix
+###########################################################################################################################
+# Create a confusion matrix for y_train
+confusion_test = confusion_matrix(y_test, y_pred)
+
+plt.figure(figsize=(8, 6))
+sns.heatmap(confusion_test, annot=True, fmt="d", cmap="Blues", annot_kws={"size": 16})
+plt.xlabel("Predicted")
+plt.ylabel("True")
+plt.title("Confusion Matrix y_test")
+plt.savefig('Part1/results/test_confusion_matrix.png')
+#plt.show()
+plt.close()
+
+##########################################################################################################################
+#  ROC curve and AUC
+###########################################################################################################################
+# Create and save ROC AUC graph
+y_prob = best_model.predict_proba(X_test)
+n_classes = len(np.unique(y_test))
+fpr = dict()
+tpr = dict()
+roc_auc = dict()
+for i in range(n_classes):
+    fpr[i], tpr[i], _ = roc_curve(np.array(pd.get_dummies(y_test))[:, i], y_prob[:, i])
+    roc_auc[i] = auc(fpr[i], tpr[i])
+
+plt.figure(figsize=(8, 6))
+for i in range(n_classes):
+    plt.plot(fpr[i], tpr[i], lw=2,
+             label='ROC curve (area = %0.2f) for class %d' % (roc_auc[i], i))
+
+plt.plot([0, 1], [0, 1], 'k--', lw=2)
+plt.xlim([0.0, 1.0])
+plt.ylim([0.0, 1.05])
+plt.xlabel('False Positive Rate')
+plt.ylabel('True Positive Rate')
+plt.title('ROC AUC')
+plt.legend(loc="lower right")
+plt.savefig('Part1/results/roc_auc.png')
+#plt.show()
+plt.close()
