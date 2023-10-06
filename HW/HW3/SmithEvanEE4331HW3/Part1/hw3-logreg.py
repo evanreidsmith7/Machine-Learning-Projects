@@ -133,6 +133,11 @@ y_encoded = le.fit_transform(y)
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.2, random_state=42)
 
+print(X)
+print(X.shape)
+print(y_encoded)
+print(y_encoded.shape)
+
 ##########################################################################################################################
 # PIPELINES
 ###########################################################################################################################
@@ -216,17 +221,17 @@ param_grid6 = {
 }
 ##########################################################################################################################
 # GridSearchCV
-'''
-gs = GridSearchCV(estimator=pipe_svc,
- ... param_grid=param_grid,
- ... scoring='accuracy',
- ... cv=10,
- ... n_jobs=-1)
-gs = gs.fit(X_train, y_train)
-print(gs.best_score_)
-0.984615384615
-print(gs.best_params_)
-'''
+
+#gs = GridSearchCV(estimator=pipe_svc,
+# ... param_grid=param_grid,
+# ... scoring='accuracy',
+# ... cv=10,
+# ... n_jobs=-1)
+#gs = gs.fit(X_train, y_train)
+#print(gs.best_score_)
+#0.984615384615
+#print(gs.best_params_)
+#
 ##########################################################################################################################
 
 gs1 = GridSearchCV(estimator=pipe1, param_grid=param_grid1, scoring='accuracy', cv=10, n_jobs=-1)
@@ -371,7 +376,7 @@ with open('Part1/results/results.txt', 'w') as file:
 ##########################################################################################################################
 # TODO: plot decision regions
 ###########################################################################################################################
-'''
+
 
 def plot_decision_regions(X,y,classifier,test_idx=None,resolution=0.02):
 	print('\nCreating the Plot Decision figure.......')
@@ -420,7 +425,7 @@ plt.tight_layout()
 plt.savefig('Part1/results/decision_regions.png')
 plt.close()
 
-'''
+
 ##########################################################################################################################
 # learning curves
 ###########################################################################################################################
