@@ -1,0 +1,20 @@
+
+Best Model Train Accuracy: 0.23
+Best Model Test Accuracy: 0.23
+Precision: 0.05
+
+Recall: 0.23
+
+F1: 0.08
+
+best_model:
+Pipeline(steps=[('scaler', StandardScaler()),
+                ('reduce_dim', LinearDiscriminantAnalysis(n_components=1)),
+                ('classifier',
+                 Perceptron(alpha=0.01, max_iter=100, penalty='l1',
+                            tol=1e-05))])
+best_params:
+{'classifier__alpha': 0.01, 'classifier__max_iter': 100, 'classifier__penalty': 'l1', 'classifier__tol': 1e-05, 'reduce_dim__n_components': 1}
+
+
+alpha=0.01, max_iter=100, penalty='l1',tol=1e-05

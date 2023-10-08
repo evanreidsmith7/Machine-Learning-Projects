@@ -1,16 +1,15 @@
-Best Model Train Accuracy: 0.40
-Best Model Test Accuracy: 0.41
-Precision: 0.37
+Best Model Train Accuracy: 0.94
+Best Model Test Accuracy: 0.94
+Precision: 0.89
 
-Recall: 0.41
+Recall: 0.94
 
-F1: 0.37
+F1: 0.92
 
 best_model:
 Pipeline(steps=[('scaler', MinMaxScaler()),
-                ('reduce_dim', LinearDiscriminantAnalysis(n_components=2)),
+                ('reduce_dim', LinearDiscriminantAnalysis(n_components=1)),
                 ('classifier',
-                 LogisticRegression(C=0.01, max_iter=250, penalty='l1',
-                                    solver='saga'))])
+                 LogisticRegression(C=0.01, penalty='l1', solver='saga'))])
 best_params:
-{'classifier__C': 0.01, 'classifier__max_iter': 250, 'classifier__penalty': 'l1', 'classifier__solver': 'saga', 'reduce_dim__n_components': 2}
+{'classifier__C': 0.01, 'classifier__max_iter': 100, 'classifier__penalty': 'l1', 'classifier__solver': 'saga', 'reduce_dim__n_components': 1}

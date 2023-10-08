@@ -31,79 +31,57 @@ import seaborn as sns
 ##########################################################################################################################
 # Data Preprocessing
 ###########################################################################################################################
+##########################################################################################################################
+# Data Preprocessing
+###########################################################################################################################
+# Set the path to the main directory containing subdirectories with CSV files
+main_directory = r'Datasets/Measurements_Upload/'
 
-# Set the path of each of the folders we want to excract from
-Corridor_rm155_71_loc0000_path = r'Datasets/Measurements_Upload/Corridor_rm155_7.1/Loc_0000'
-Lab139_71_loc0000_path =         r'Datasets/Measurements_Upload/Lab139_7.1/Loc_0000'
-Main_Lobby71_loc0000_path =      r'Datasets/Measurements_Upload/Main_Lobby_7.1/Loc_0000'
-Sport_Hall_71_loc0000_path =     r'Datasets/Measurements_Upload/Sport_Hall_7.1/Loc_0000'
 
-# Create a dataframe to store the data
-combined_data = pd.DataFrame()
 
-# Loop through each file in the corridor folder and read the data into a dataframe
-for filename in os.listdir(Corridor_rm155_71_loc0000_path):
-    if filename.endswith(".csv"):
-        file_path = os.path.join(Corridor_rm155_71_loc0000_path, filename)
-        data = pd.read_csv(file_path)
-        data = data['# Version 1.00'].str.split(';', expand=True)
-        data = data.drop([0,1])
-        combined_data1 = pd.concat([combined_data, data], ignore_index=True)
-
-# add the labels to the dataframe
-combined_data1['label'] = 'Corridor'
-combined_data1.to_csv("Datasets/combined_data_Corridor_rm155_71_loc0000.csv", index=False)
-
-# Loop through each file in the folder and read the data into a dataframe
-for filename in os.listdir(Lab139_71_loc0000_path):
-    if filename.endswith(".csv"):
-        file_path = os.path.join(Lab139_71_loc0000_path, filename)
-        data = pd.read_csv(file_path)
-        data = data['# Version 1.00'].str.split(';', expand=True)
-        data = data.drop([0,1])
-        combined_data2 = pd.concat([combined_data, data], ignore_index=True)
-
-combined_data2['label'] = 'Lab139'
-combined_data2.to_csv("Datasets/combined_data_Lab139_71_loc0000.csv", index=False)
-
-# Loop through each file in the folder and read the data into a dataframe
-for filename in os.listdir(Main_Lobby71_loc0000_path):
-    if filename.endswith(".csv"):
-        file_path = os.path.join(Main_Lobby71_loc0000_path, filename)
-        data = pd.read_csv(file_path)
-        data = data['# Version 1.00'].str.split(';', expand=True)
-        data = data.drop([0,1])
-        combined_data3 = pd.concat([combined_data, data], ignore_index=True)
-
-combined_data3['label'] = 'Main_Lobby'
-combined_data3.to_csv("Datasets/combined_data_Main_Lobby71_loc0000.csv", index=False)
-
-# Loop through each file in the folder and read the data into a dataframe
-for filename in os.listdir(Sport_Hall_71_loc0000_path):
-    if filename.endswith(".csv"):
-        file_path = os.path.join(Sport_Hall_71_loc0000_path, filename)
-        data = pd.read_csv(file_path)
-        data = data['# Version 1.00'].str.split(';', expand=True)
-        data = data.drop([0,1])
-        combined_data4 = pd.concat([combined_data, data], ignore_index=True)
-
-combined_data4['label'] = 'Sport_Hall'
-combined_data4.to_csv("Datasets/combined_data_Sport_Hall_71_loc0000.csv", index=False)
-
-# List of CSV files to combine
-csv_files = [
-    'Datasets/combined_data_Corridor_rm155_71_loc0000.csv',
-    'Datasets/combined_data_Lab139_71_loc0000.csv',
-    'Datasets/combined_data_Main_Lobby71_loc0000.csv',
-    'Datasets/combined_data_Sport_Hall_71_loc0000.csv'
+# Define the list of paths
+paths = [
+    r'Datasets/Measurements_Upload/Corridor_rm155_7.1',
+    r'Datasets/Measurements_Upload/Lab139_7.1',
+    r'Datasets/Measurements_Upload/Main_Lobby_7.1',
+    r'Datasets/Measurements_Upload/Sport_Hall_7.1'
 ]
 
-# combine all combined data into a single dataframe
-data_frames = [combined_data1, combined_data2, combined_data3, combined_data4]
+# Number of subdirectories to traverse (you can adjust this as needed)
+num_subdirectories_to_traverse = 10  # Set to None to traverse all subdirectories
 
+# Function to process a directory and return combined data
+def process_directory(directory_path, label):
+    combined_data = pd.DataFrame()
+    
+    for root, dirs, files in os.walk(directory_path):
+        for subdir in dirs[:num_subdirectories_to_traverse]:
+            subdir_path = os.path.join(root, subdir)
+            
+            for filename in os.listdir(subdir_path):
+                if filename.endswith(".csv"):
+                    file_path = os.path.join(subdir_path, filename)
+                    data = pd.read_csv(file_path)
+                    data = data['# Version 1.00'].str.split(';', expand=True)
+                    data = data.drop([0, 1])
+                    combined_data = pd.concat([combined_data, data], ignore_index=True)
+    
+    combined_data['label'] = label
+    return combined_data
+
+# Create a list of dataframes for each path
+data_frames = []
+
+for path in paths:
+    label = os.path.basename(path)
+    data_frame = process_directory(path, label)
+    data_frames.append(data_frame)
+
+# Concatenate all dataframes into one
 combined_data = pd.concat(data_frames, ignore_index=True)
 
-combined_data.to_csv("Datasets/combined_data_all.csv", index=False)
+
+#combined_data.to_csv("Datasets/combined_data_all.csv", index=False)
 
 # drop the 5th collumn
 combined_data = combined_data.drop(columns=[5])
@@ -116,7 +94,6 @@ combined_data.dropna(inplace=True)
 
 # Splitting into X (features) and y (labels)
 X = combined_data.drop(columns=['label'])  # Assuming 'label' is the column containing your labels
-
 # Convert empty strings to NaN
 X[X == ''] = np.nan
 
@@ -129,7 +106,10 @@ y = combined_data['label']
 # encode y
 le = LabelEncoder()
 y_encoded = le.fit_transform(y)
-
+print(X)
+print(X.shape)
+print(y_encoded)
+print(y_encoded.shape)
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.2, random_state=42)
 
@@ -155,7 +135,7 @@ param_grid = {
 gs = GridSearchCV(estimator=pipe_svc,
  ... param_grid=param_grid,
  ... scoring='accuracy',
- ... cv=10,
+ ... cv=5,
  ... n_jobs=-1)
 gs = gs.fit(X_train, y_train)
 print(gs.best_score_)
@@ -164,7 +144,7 @@ print(gs.best_params_)
 '''
 ##########################################################################################################################
 
-gs1 = GridSearchCV(estimator=pipe1, param_grid=param_grid, scoring='accuracy', cv=10, n_jobs=-1)
+gs1 = GridSearchCV(estimator=pipe1, param_grid=param_grid, scoring='accuracy', cv=5, n_jobs=-1)
 gs1.fit(X_train, y_train)
 print("\n\n\n")
 print("\ngs1.best_score_:")
@@ -178,7 +158,7 @@ print("\n\n\n")
 ##########################################################################################################################
 # find best model
 ###########################################################################################################################
-
+y_prob = gs1.predict_proba(X_test)
 best_score1 = gs1.best_score_
 best_model = gs1.best_estimator_
 best_params = gs1.best_params_
@@ -203,8 +183,9 @@ print("best_model")
 print(best_model)
 print("best_params:")
 print(best_params)
-
-
+print("\n\n\n\n")
+print(X.shape)
+print(y_encoded.shape)
 ##########################################################################################################################
 # txt file
 ###########################################################################################################################
@@ -225,7 +206,7 @@ with open('Part3/results/results.txt', 'w') as file:
 ##########################################################################################################################
 # TODO: plot decision regions
 ###########################################################################################################################
-'''
+
 
 def plot_decision_regions(X,y,classifier,test_idx=None,resolution=0.02):
 	print('\nCreating the Plot Decision figure.......')
@@ -257,15 +238,22 @@ def plot_decision_regions(X,y,classifier,test_idx=None,resolution=0.02):
 	print('\t\t\t\t........DONE!')
 
 
-X_combined = np.vstack((X_train,X_test))
+sc = StandardScaler()
+X_train_std = sc.fit_transform(X_train)
+X_test_std = sc.transform(X_test)
+pca = PCA(n_components=2)
+X_train_dim = pca.fit_transform(X_train_std)
+X_test_dim = pca.transform(X_test_std)
+plotmodel = best_model.fit(X_train_dim, y_train)
+
+X_combined = np.vstack((X_train_dim,X_test_dim))
 y_combined = np.hstack((y_train,y_test))
 
 print(X_combined.shape)
 print(y_combined.shape)
 print(X_combined)
-
 # plot_decision_regions(X=X_combined, y=y_combined, classifier=gs1_std, test_idx=range(y_train.size, y_train.size + y_test.size))
-plot_decision_regions(X=X_combined, y=y_combined, classifier=best_model, test_idx=None, resolution=0.01)
+plot_decision_regions(X=X_combined, y=y_combined, classifier=plotmodel, test_idx=None, resolution=0.01)
 
 plt.xlabel('PC1')
 plt.ylabel('PC2')
@@ -274,7 +262,7 @@ plt.tight_layout()
 plt.savefig('Part3/results/decision_regions.png')
 plt.close()
 
-'''
+
 
 ##########################################################################################################################
 # learning curves
@@ -349,7 +337,7 @@ plt.close()
 #  ROC curve and AUC
 ###########################################################################################################################
 # Create and save ROC AUC graph
-y_prob = best_model.predict_proba(X_test)
+#y_prob = best_model.predict_proba(X_test)
 n_classes = len(np.unique(y_test))
 fpr = dict()
 tpr = dict()

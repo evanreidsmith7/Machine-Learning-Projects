@@ -45,7 +45,7 @@ paths = [
 ]
 
 # Number of subdirectories to traverse (you can adjust this as needed)
-num_subdirectories_to_traverse = 3  # Set to None to traverse all subdirectories
+num_subdirectories_to_traverse = 50  # Set to None to traverse all subdirectories
 
 # Function to process a directory and return combined data
 def process_directory(directory_path, label):
@@ -119,7 +119,7 @@ pipe1 = Pipeline([
     ('classifier', LogisticRegression())
 ])
 param_grid1 = {
-    'reduce_dim__n_components': [1, 2, 3],  # Number of components for PCA
+    'reduce_dim__n_components': [1, 2],  # Number of components for PCA
     'classifier__penalty': ['l1', 'l2'],  # Regularization penalty (L1 or L2)
     'classifier__C': [0.01, 0.1, 1.0, 10.0],  # Inverse of regularization strength
     'classifier__solver': ['sag', 'saga'],  # Solver algorithms
@@ -132,7 +132,7 @@ pipe2 = Pipeline([
     ('classifier', LogisticRegression())
 ])
 param_grid2 = {
-    'reduce_dim__n_components': [1, 2, 3],  # Number of components for LDA
+    'reduce_dim__n_components': [1, 2],  # Number of components for LDA
     'classifier__penalty': ['l1', 'l2'],  # Regularization penalty (L1 or L2)
     'classifier__C': [0.01, 0.1, 1.0, 10.0],  # Inverse of regularization strength
     'classifier__solver': ['sag', 'saga'],  # Solver algorithms
@@ -145,7 +145,7 @@ pipe3 = Pipeline([
     ('classifier', LogisticRegression())
 ])
 param_grid3 = {
-    'reduce_dim__n_components': [1, 2, 3],  # Number of components for LDA
+    'reduce_dim__n_components': [1, 2],  # Number of components for LDA
     'classifier__penalty': ['l1', 'l2'],  # Regularization penalty (L1 or L2)
     'classifier__C': [0.01, 0.1, 1.0, 10.0],  # Inverse of regularization strength
     'classifier__solver': ['sag', 'saga'],  # Solver algorithms
@@ -158,7 +158,7 @@ pipe4 = Pipeline([
     ('classifier', LogisticRegression())
 ])
 param_grid4 = {
-    'reduce_dim__n_components': [1, 2, 3],  # Number of components for PCA
+    'reduce_dim__n_components': [1, 2],  # Number of components for PCA
     'classifier__penalty': ['l1', 'l2'],  # Regularization penalty (L1 or L2)
     'classifier__C': [0.01, 0.1, 1.0, 10.0],  # Inverse of regularization strength
     'classifier__solver': ['sag', 'saga'],  # Solver algorithms
@@ -184,7 +184,7 @@ pipe6 = Pipeline([
     ('classifier', LogisticRegression())
 ])
 param_grid6 = {
-    'reduce_dim__n_components': [1, 2, 3],  # Number of components for LDA
+    'reduce_dim__n_components': [1, 2],  # Number of components for LDA
     'classifier__penalty': ['l1', 'l2'],  # Regularization penalty (L1 or L2)
     'classifier__C': [0.01, 0.1, 1.0, 10.0],  # Inverse of regularization strength
     'classifier__solver': ['sag','lbfgs', 'saga'],  # Solver algorithms
@@ -193,7 +193,7 @@ param_grid6 = {
 ##########################################################################################################################
 # Grid Search
 ##########################################################################################################################
-gs = GridSearchCV(estimator=pipe4, param_grid=param_grid1, scoring='accuracy', cv=5, n_jobs=-1)
+gs = GridSearchCV(estimator=pipe4, param_grid=param_grid4, scoring='accuracy', cv=5, n_jobs=-1)
 gs.fit(X_train, y_train)
 print("\n\n\n")
 print("\ngs1.best_score_:")

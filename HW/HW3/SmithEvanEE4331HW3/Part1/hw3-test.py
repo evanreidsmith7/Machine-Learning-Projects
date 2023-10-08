@@ -45,7 +45,7 @@ paths = [
 ]
 
 # Number of subdirectories to traverse (you can adjust this as needed)
-num_subdirectories_to_traverse = 3  # Set to None to traverse all subdirectories
+num_subdirectories_to_traverse = 50  # Set to None to traverse all subdirectories
 
 # Function to process a directory and return combined data
 def process_directory(directory_path, label):
@@ -193,7 +193,7 @@ param_grid6 = {
 ##########################################################################################################################
 # Grid Search
 ##########################################################################################################################
-gs = GridSearchCV(estimator=pipe4, param_grid=param_grid1, scoring='accuracy', cv=5, n_jobs=-1)
+gs = GridSearchCV(estimator=pipe5, param_grid=param_grid5, scoring='accuracy', cv=5, n_jobs=-1)
 gs.fit(X_train, y_train)
 print("\n\n\n")
 print("\ngs1.best_score_:")

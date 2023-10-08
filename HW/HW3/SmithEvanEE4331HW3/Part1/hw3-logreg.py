@@ -32,78 +32,53 @@ import seaborn as sns
 # Data Preprocessing
 ###########################################################################################################################
 
-# Set the path of each of the folders we want to excract from
-Corridor_rm155_71_loc0000_path = r'Datasets/Measurements_Upload/Corridor_rm155_7.1/Loc_0000'
-Lab139_71_loc0000_path =         r'Datasets/Measurements_Upload/Lab139_7.1/Loc_0000'
-Main_Lobby71_loc0000_path =      r'Datasets/Measurements_Upload/Main_Lobby_7.1/Loc_0000'
-Sport_Hall_71_loc0000_path =     r'Datasets/Measurements_Upload/Sport_Hall_7.1/Loc_0000'
+main_directory = r'Datasets/Measurements_Upload/'
 
-# Create a dataframe to store the data
-combined_data = pd.DataFrame()
 
-# Loop through each file in the corridor folder and read the data into a dataframe
-for filename in os.listdir(Corridor_rm155_71_loc0000_path):
-    if filename.endswith(".csv"):
-        file_path = os.path.join(Corridor_rm155_71_loc0000_path, filename)
-        data = pd.read_csv(file_path)
-        data = data['# Version 1.00'].str.split(';', expand=True)
-        data = data.drop([0,1])
-        combined_data1 = pd.concat([combined_data, data], ignore_index=True)
 
-# add the labels to the dataframe
-combined_data1['label'] = 'Corridor'
-combined_data1.to_csv("Datasets/combined_data_Corridor_rm155_71_loc0000.csv", index=False)
-
-# Loop through each file in the folder and read the data into a dataframe
-for filename in os.listdir(Lab139_71_loc0000_path):
-    if filename.endswith(".csv"):
-        file_path = os.path.join(Lab139_71_loc0000_path, filename)
-        data = pd.read_csv(file_path)
-        data = data['# Version 1.00'].str.split(';', expand=True)
-        data = data.drop([0,1])
-        combined_data2 = pd.concat([combined_data, data], ignore_index=True)
-
-combined_data2['label'] = 'Lab139'
-combined_data2.to_csv("Datasets/combined_data_Lab139_71_loc0000.csv", index=False)
-
-# Loop through each file in the folder and read the data into a dataframe
-for filename in os.listdir(Main_Lobby71_loc0000_path):
-    if filename.endswith(".csv"):
-        file_path = os.path.join(Main_Lobby71_loc0000_path, filename)
-        data = pd.read_csv(file_path)
-        data = data['# Version 1.00'].str.split(';', expand=True)
-        data = data.drop([0,1])
-        combined_data3 = pd.concat([combined_data, data], ignore_index=True)
-
-combined_data3['label'] = 'Main_Lobby'
-combined_data3.to_csv("Datasets/combined_data_Main_Lobby71_loc0000.csv", index=False)
-
-# Loop through each file in the folder and read the data into a dataframe
-for filename in os.listdir(Sport_Hall_71_loc0000_path):
-    if filename.endswith(".csv"):
-        file_path = os.path.join(Sport_Hall_71_loc0000_path, filename)
-        data = pd.read_csv(file_path)
-        data = data['# Version 1.00'].str.split(';', expand=True)
-        data = data.drop([0,1])
-        combined_data4 = pd.concat([combined_data, data], ignore_index=True)
-
-combined_data4['label'] = 'Sport_Hall'
-combined_data4.to_csv("Datasets/combined_data_Sport_Hall_71_loc0000.csv", index=False)
-
-# List of CSV files to combine
-csv_files = [
-    'Datasets/combined_data_Corridor_rm155_71_loc0000.csv',
-    'Datasets/combined_data_Lab139_71_loc0000.csv',
-    'Datasets/combined_data_Main_Lobby71_loc0000.csv',
-    'Datasets/combined_data_Sport_Hall_71_loc0000.csv'
+# Define the list of paths
+paths = [
+    r'Datasets/Measurements_Upload/Corridor_rm155_7.1',
+    r'Datasets/Measurements_Upload/Lab139_7.1',
+    r'Datasets/Measurements_Upload/Main_Lobby_7.1',
+    r'Datasets/Measurements_Upload/Sport_Hall_7.1'
 ]
 
-# combine all combined data into a single dataframe
-data_frames = [combined_data1, combined_data2, combined_data3, combined_data4]
+# Number of subdirectories to traverse (you can adjust this as needed)
+num_subdirectories_to_traverse = 1  # Set to None to traverse all subdirectories
 
+# Function to process a directory and return combined data
+def process_directory(directory_path, label):
+    combined_data = pd.DataFrame()
+    
+    for root, dirs, files in os.walk(directory_path):
+        for subdir in dirs[:num_subdirectories_to_traverse]:
+            subdir_path = os.path.join(root, subdir)
+            
+            for filename in os.listdir(subdir_path):
+                if filename.endswith(".csv"):
+                    file_path = os.path.join(subdir_path, filename)
+                    data = pd.read_csv(file_path)
+                    data = data['# Version 1.00'].str.split(';', expand=True)
+                    data = data.drop([0, 1])
+                    combined_data = pd.concat([combined_data, data], ignore_index=True)
+    
+    combined_data['label'] = label
+    return combined_data
+
+# Create a list of dataframes for each path
+data_frames = []
+
+for path in paths:
+    label = os.path.basename(path)
+    data_frame = process_directory(path, label)
+    data_frames.append(data_frame)
+
+# Concatenate all dataframes into one
 combined_data = pd.concat(data_frames, ignore_index=True)
 
-combined_data.to_csv("Datasets/combined_data_all.csv", index=False)
+
+#combined_data.to_csv("Datasets/combined_data_all.csv", index=False)
 
 # drop the 5th collumn
 combined_data = combined_data.drop(columns=[5])
@@ -116,7 +91,6 @@ combined_data.dropna(inplace=True)
 
 # Splitting into X (features) and y (labels)
 X = combined_data.drop(columns=['label'])  # Assuming 'label' is the column containing your labels
-
 # Convert empty strings to NaN
 X[X == ''] = np.nan
 
@@ -132,12 +106,6 @@ y_encoded = le.fit_transform(y)
 
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.2, random_state=42)
-
-print(X)
-print(X.shape)
-print(y_encoded)
-print(y_encoded.shape)
-
 ##########################################################################################################################
 # PIPELINES
 ###########################################################################################################################
@@ -170,14 +138,14 @@ param_grid2 = {
 
 pipe3 = Pipeline([
     ('scaler', StandardScaler()),
-    ('reduce_dim', KernelPCA(kernel='rbf')),  # You can change this to LDA or other dimensionality reduction techniques
+    ('reduce_dim', PCA()),  # You can change this to LDA or other dimensionality reduction techniques
     ('classifier', LogisticRegression())
 ])
 param_grid3 = {
-    'reduce_dim__n_components': [1, 2, 3],  # Number of components for LDA
+    'reduce_dim__n_components': [1],  # Number of components for LDA
     'classifier__penalty': [None, 'l2'],  # Regularization penalty (L1 or L2)
-    'classifier__C': [0.01, 0.1, 1.0, 10.0],  # Inverse of regularization strength
-    'classifier__solver': ['sag','lbfgs', 'saga'],  # Solver algorithms
+    'classifier__C': [0.01],  # Inverse of regularization strength
+    'classifier__solver': ['saga'],  # Solver algorithms
     'classifier__max_iter': [100, 250, 500]  # Maximum number of iterations
 }
 
@@ -209,32 +177,31 @@ param_grid5 = {
 
 pipe6 = Pipeline([
     ('scaler', MinMaxScaler()),
-    ('reduce_dim', KernelPCA(kernel='rbf')),  # You can change this to LDA or other dimensionality reduction techniques
+    ('reduce_dim', PCA()),  # You can change this to LDA or other dimensionality reduction techniques
     ('classifier', LogisticRegression())
 ])
 param_grid6 = {
-    'reduce_dim__n_components': [1, 2, 3],  # Number of components for LDA
+    'reduce_dim__n_components': [1],  # Number of components for LDA
     'classifier__penalty': [None, 'l2'],  # Regularization penalty (L1 or L2)
-    'classifier__C': [0.01, 0.1, 1.0, 10.0],  # Inverse of regularization strength
-    'classifier__solver': ['sag','lbfgs', 'saga'],  # Solver algorithms
+    'classifier__C': [0.01],  # Inverse of regularization strength
+    'classifier__solver': ['saga'],  # Solver algorithms
     'classifier__max_iter': [100, 250, 500]  # Maximum number of iterations
 }
+########################
+# SPEED UP GRID SEARCH #
+########################
+SPEEDGRID = {
+    'reduce_dim__n_components': [1],  # Number of components for LDA
+    'classifier__penalty': [None],  # Regularization penalty (L1 or L2)
+    'classifier__C': [0.01],  # Inverse of regularization strength
+    'classifier__solver': ['saga'],  # Solver algorithms
+    'classifier__max_iter': [100]  # Maximum number of iterations
+}
 ##########################################################################################################################
-# GridSearchCV
-
-#gs = GridSearchCV(estimator=pipe_svc,
-# ... param_grid=param_grid,
-# ... scoring='accuracy',
-# ... cv=10,
-# ... n_jobs=-1)
-#gs = gs.fit(X_train, y_train)
-#print(gs.best_score_)
-#0.984615384615
-#print(gs.best_params_)
-#
+# Grid Search
 ##########################################################################################################################
 
-gs1 = GridSearchCV(estimator=pipe1, param_grid=param_grid1, scoring='accuracy', cv=10, n_jobs=-1)
+gs1 = GridSearchCV(estimator=pipe1, param_grid=param_grid1, scoring='accuracy', cv=5, n_jobs=-1)
 gs1.fit(X_train, y_train)
 print("\n\n\n")
 print("\ngs1.best_score_:")
@@ -245,7 +212,7 @@ print("\ngs1.best_estimator_:")
 print(gs1.best_estimator_)
 print("\n\n\n")
 
-gs2 = GridSearchCV(estimator=pipe2, param_grid=param_grid2, scoring='accuracy', cv=10, n_jobs=-1)
+gs2 = GridSearchCV(estimator=pipe2, param_grid=param_grid2, scoring='accuracy', cv=5, n_jobs=-1)
 gs2.fit(X_train, y_train)
 print("\n\n\n")
 print("\ngs2.best_score_:")
@@ -256,7 +223,7 @@ print("\ngs2.best_estimator_:")
 print(gs2.best_estimator_)
 print("\n\n\n")
 
-gs3 = GridSearchCV(estimator=pipe3, param_grid=param_grid3, scoring='accuracy', cv=10, n_jobs=-1)
+gs3 = GridSearchCV(estimator=pipe3, param_grid=param_grid3, scoring='accuracy', cv=5, n_jobs=-1)
 gs3.fit(X_train, y_train)
 print("\n\n\n")
 print("\ngs3.best_score_:")
@@ -267,7 +234,7 @@ print("\ngs3.best_estimator_:")
 print(gs3.best_estimator_)
 print("\n\n\n")
 
-gs4 = GridSearchCV(estimator=pipe4, param_grid=param_grid4, scoring='accuracy', cv=10, n_jobs=-1)
+gs4 = GridSearchCV(estimator=pipe4, param_grid=param_grid4, scoring='accuracy', cv=5, n_jobs=-1)
 gs4.fit(X_train, y_train)
 print("\n\n\n")
 print("\ngs4.best_score_:")
@@ -278,7 +245,7 @@ print("\ngs4.best_estimator_:")
 print(gs4.best_estimator_)
 print("\n\n\n")
 
-gs5 = GridSearchCV(estimator=pipe5, param_grid=param_grid5, scoring='accuracy', cv=10, n_jobs=-1)
+gs5 = GridSearchCV(estimator=pipe5, param_grid=param_grid5, scoring='accuracy', cv=5, n_jobs=-1)
 gs5.fit(X_train, y_train)
 print("\n\n\n")
 print("\ngs5.best_score_:")
@@ -289,7 +256,7 @@ print("\ngs5.best_estimator_:")
 print(gs5.best_estimator_)
 print("\n\n\n")
 
-gs6 = GridSearchCV(estimator=pipe6, param_grid=param_grid6, scoring='accuracy', cv=10, n_jobs=-1)
+gs6 = GridSearchCV(estimator=pipe6, param_grid=param_grid6, scoring='accuracy', cv=5, n_jobs=-1)
 gs6.fit(X_train, y_train)
 print("\n\n\n")
 print("\ngs6.best_score_:")
@@ -317,23 +284,69 @@ best_index = np.argmax([best_score1, best_score2, best_score3, best_score4, best
 
 # Set best_model to the best estimator from the grid search with the highest score
 if best_index == 0:
+    y_prob = gs1.best_estimator_.predict_proba(X_test)
     best_model = gs1.best_estimator_
     best_params = gs1.best_params_
+    best_model_dimreduce = gs1.best_estimator_['reduce_dim']
+    best_model_scaler = gs1.best_estimator_['scaler']
+    best_model_dimreduce_components = gs1.best_estimator_['reduce_dim'].n_components
+    plotmodel = gs1.best_estimator_['classifier']
 elif best_index == 1:
+    y_prob = gs2.best_estimator_.predict_proba(X_test)
     best_model = gs2.best_estimator_
-    best_params = gs2.best_params_    
+    best_params = gs2.best_params_
+    best_model_dimreduce = gs2.best_estimator_['reduce_dim']
+    best_model_scaler = gs2.best_estimator_['scaler']
+    best_model_dimreduce_components = gs2.best_estimator_['reduce_dim'].n_components    
+    plotmodel = gs2.best_estimator_['classifier']
 elif best_index == 2:
+    y_prob = gs3.best_estimator_.predict_proba(X_test)
     best_model = gs3.best_estimator_
     best_params = gs3.best_params_
+    best_model_dimreduce = gs3.best_estimator_['reduce_dim']
+    best_model_scaler = gs3.best_estimator_['scaler']
+    best_model_dimreduce_components = gs3.best_estimator_['reduce_dim'].n_components
+    plotmodel = gs3.best_estimator_['classifier']
 elif best_index == 3:
+    y_prob = gs4.best_estimator_.predict_proba(X_test)
     best_model = gs4.best_estimator_
     best_params = gs4.best_params_
+    best_model_dimreduce = gs4.best_estimator_['reduce_dim']
+    best_model_scaler = gs4.best_estimator_['scaler']
+    best_model_dimreduce_components = gs4.best_estimator_['reduce_dim'].n_components
+    plotmodel = gs4.best_estimator_['classifier']
 elif best_index == 4:
+    y_prob = gs5.best_estimator_.predict_proba(X_test)
     best_model = gs5.best_estimator_
     best_params = gs5.best_params_
+    best_model_dimreduce = gs5.best_estimator_['reduce_dim']
+    best_model_scaler = gs5.best_estimator_['scaler']
+    best_model_dimreduce_components = gs5.best_estimator_['reduce_dim'].n_components
+    plotmodel = gs5.best_estimator_['classifier']
 else:
+    y_prob = gs6.best_estimator_.predict_proba(X_test)
     best_model = gs6.best_estimator_
     best_params = gs6.best_params_
+    best_model_dimreduce = gs6.best_estimator_['reduce_dim']
+    best_model_scaler = gs6.best_estimator_['scaler']
+    best_model_dimreduce_components = gs6.best_estimator_['reduce_dim'].n_components
+    plotmodel = gs6.best_estimator_['classifier']
+###############################################
+##################DEBUG########################
+###############################################
+print("\n\n\n")
+print("\nbest_model:")
+print(best_model)
+print("\nbest_model_dimreduce:")
+print(best_model_dimreduce)
+print("\nbest_model_scaler:")
+print(best_model_scaler)
+print("\nbest_model_dimreduce_components:")
+print(best_model_dimreduce_components)
+print("\n\n\n")
+###############################################
+##################DEBUG########################
+###############################################
 # Make predictions on the test data
 y_pred_train = best_model.predict(X_train)
 y_pred = best_model.predict(X_test)
@@ -354,6 +367,9 @@ print("best_model")
 print(best_model)
 print("best_params:")
 print(best_params)
+print("\n\n\n")
+print(X.shape)
+print(y_encoded.shape)
 
 
 ##########################################################################################################################
@@ -376,7 +392,39 @@ with open('Part1/results/results.txt', 'w') as file:
 ##########################################################################################################################
 # TODO: plot decision regions
 ###########################################################################################################################
+# PLOT FUNC################################################################################################################
+def plotDecisionRegions(name,X, y, classifier, resolution=0.02):
+    # setup marker generator and color map
+    markers = ('s', 'x', 'o', '^', 'v')
+    colors = ('red', 'blue', 'lightgreen', 'gray', 'cyan')
+    cmap = ListedColormap(colors[:len(np.unique(y))])
+    # plot the decision surface
+    x1_min, x1_max = X[:, 0].min() - 1, X[:, 0].max() + 1
+    x2_min, x2_max = X[:, 1].min() - 1, X[:, 1].max() + 1
+    xx1, xx2 = np.meshgrid(np.arange(x1_min, x1_max, resolution),
+    np.arange(x2_min, x2_max, resolution))
+    Z = classifier.predict(np.array([xx1.ravel(), xx2.ravel()]).T)
+    Z = Z.reshape(xx1.shape)
+    plt.contourf(xx1, xx2, Z, alpha=0.3, cmap=cmap)
+    plt.xlim(xx1.min(), xx1.max())
+    plt.ylim(xx2.min(), xx2.max())
+    # plot class samples
+    for idx, cl in enumerate(np.unique(y)):
+        plt.scatter(x=X[y == cl, 0],
+        y=X[y == cl, 1],
+        alpha=0.8,
+        c=colors[idx],
+        marker=markers[idx],
+        label=cl,
+        edgecolor='black')
 
+
+    plt.title("{} Decision Regions".format(name))
+    plt.legend()
+    plt.savefig("Part1/results/{}_Decision_Regions.png".format(name))
+    plt.close()
+# PLOT FUNC################################################################################################################
+'''
 
 def plot_decision_regions(X,y,classifier,test_idx=None,resolution=0.02):
 	print('\nCreating the Plot Decision figure.......')
@@ -408,22 +456,31 @@ def plot_decision_regions(X,y,classifier,test_idx=None,resolution=0.02):
 	print('\t\t\t\t........DONE!')
 
 
-X_combined = np.vstack((X_train,X_test))
-y_combined = np.hstack((y_train,y_test))
 
-print(X_combined.shape)
-print(y_combined.shape)
-print(X_combined)
+'''
 
-# plot_decision_regions(X=X_combined, y=y_combined, classifier=gs1_std, test_idx=range(y_train.size, y_train.size + y_test.size))
-plot_decision_regions(X=X_combined, y=y_combined, classifier=best_model, test_idx=None, resolution=0.01)
+X_train_plt = best_model_scaler.fit_transform(X_train)
+X_test_plt = best_model_scaler.transform(X_test)
+if type(best_model_dimreduce) == PCA():
+    pca = PCA(n_components=2)
+    X_train_plt = pca.fit_transform(X_train_plt)
+    X_test_plt = pca.transform(X_test_plt)
+else:
+    lda = LDA(n_components=2)
+    X_train_plt = lda.fit_transform(X_train_plt, y_train)
+    X_test_plt = lda.transform(X_test_plt)
 
-plt.xlabel('PC1')
-plt.ylabel('PC2')
-plt.legend(loc='lower left')
-plt.tight_layout()
-plt.savefig('Part1/results/decision_regions.png')
-plt.close()
+plotmodel = best_model['classifier']
+plotmodel.fit(X_train_plt[:, :2], y_train)
+print(X_train_plt.shape)
+
+X_combined = np.vstack((X_train_plt[:, :2], X_test_plt[:, :2]))
+y_combined = np.hstack((y_train, y_test))
+
+plotDecisionRegions("Logistic Regression", X=X_combined, y=y_combined, \
+                          classifier=plotmodel, resolution=0.02)
+
+
 
 
 ##########################################################################################################################
@@ -497,7 +554,6 @@ plt.close()
 #  ROC curve and AUC
 ###########################################################################################################################
 # Create and save ROC AUC graph
-y_prob = best_model.predict_proba(X_test)
 n_classes = len(np.unique(y_test))
 fpr = dict()
 tpr = dict()

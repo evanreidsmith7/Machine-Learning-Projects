@@ -1,10 +1,10 @@
-Best Model Train Accuracy: 0.50
-Best Model Test Accuracy: 0.50
-Precision: 0.25
+Best Model Train Accuracy: 0.94
+Best Model Test Accuracy: 0.94
+Precision: 0.89
 
-Recall: 0.50
+Recall: 0.94
 
-F1: 0.34
+F1: 0.92
 
 best_model:
 Pipeline(steps=[('scaler', MinMaxScaler()), ('reduce_dim', PCA(n_components=1)),
