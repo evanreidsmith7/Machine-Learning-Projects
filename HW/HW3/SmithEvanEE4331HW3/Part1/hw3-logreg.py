@@ -454,9 +454,6 @@ def plot_decision_regions(X,y,classifier,test_idx=None,resolution=0.02):
 	plt.scatter(X_test[:,0],X_test[:,1],facecolors='none', edgecolors='black', alpha=1.0, linewidths=1, marker='o', s=55, label='test set')
 
 	print('\t\t\t\t........DONE!')
-
-
-
 '''
 
 X_train_plt = best_model_scaler.fit_transform(X_train)

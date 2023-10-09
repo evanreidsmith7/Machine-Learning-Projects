@@ -1,1 +1,8 @@
-ROC AUC: nan (+/- nan) [Logistic Regression]ROC AUC: nan (+/- nan) [Perceptron]ROC AUC: nan (+/- nan) [Decision Tree]ROC AUC: nan (+/- nan) [SVM]
+
+Best Model Train Accuracy: 1.00
+Best Model Test Accuracy: 1.00
+Precision: 1.00
+
+Recall: 1.00
+
+F1: 1.00

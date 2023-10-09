@@ -8,9 +8,8 @@ Recall: 0.42
 F1: 0.40
 
 best_model:
-Pipeline(steps=[('scaler', MinMaxScaler()),
+Pipeline(steps=[('scaler', StandardScaler()),
                 ('reduce_dim', LinearDiscriminantAnalysis(n_components=3)),
-                ('classifier',
-                 LogisticRegression(C=0.01, penalty=None, solver='saga'))])
+                ('classifier', LogisticRegression(C=10.0, solver='sag'))])
 best_params:
-{'classifier__C': 0.01, 'classifier__max_iter': 100, 'classifier__penalty': None, 'classifier__solver': 'saga', 'reduce_dim__n_components': 3}
+{'classifier__C': 10.0, 'classifier__max_iter': 100, 'classifier__penalty': 'l2', 'classifier__solver': 'sag', 'reduce_dim__n_components': 3}

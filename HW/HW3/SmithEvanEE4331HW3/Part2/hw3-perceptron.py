@@ -45,7 +45,7 @@ paths = [
 ]
 
 # Number of subdirectories to traverse (you can adjust this as needed)
-num_subdirectories_to_traverse = 1  # Set to None to traverse all subdirectories
+num_subdirectories_to_traverse = 10  # Set to None to traverse all subdirectories
 
 # Function to process a directory and return combined data
 def process_directory(directory_path, label):
@@ -106,8 +106,6 @@ y_encoded = le.fit_transform(y)
 
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.2, random_state=42)
-
-
 ##########################################################################################################################
 # PIPELINES
 ###########################################################################################################################
@@ -155,6 +153,13 @@ param_grid = {
     'classifier__max_iter': [100, 250],  # Maximum number of iterations
     'classifier__tol': [1e-3, 1e-4, 1e-5],  # Tolerance for stopping criterion
 }
+speed_grid = {
+    'reduce_dim__n_components': [1],  # Number of components for PCA
+    'classifier__penalty': [None,'l1'],  # Regularization penalty (L2, L1, or None)
+    'classifier__alpha': [0.1],  # Regularization strength (alpha)
+    'classifier__max_iter': [100],  # Maximum number of iterations
+    'classifier__tol': [1e-3],  # Tolerance for stopping criterion
+}
 
 ##########################################################################################################################
 # GridSearchCV
@@ -193,7 +198,7 @@ print("\ngs2.best_estimator_:")
 print(gs2.best_estimator_)
 print("\n\n\n")
 
-gs3 = GridSearchCV(estimator=pipe3, param_grid=param_grid, scoring='accuracy', cv=5, n_jobs=-1)
+gs3 = GridSearchCV(estimator=pipe3, param_grid=speed_grid, scoring='accuracy', cv=5, n_jobs=-1)
 gs3.fit(X_train, y_train)
 print("\n\n\n")
 print("\ngs3.best_score_:")
@@ -226,7 +231,7 @@ print("\ngs5.best_estimator_:")
 print(gs5.best_estimator_)
 print("\n\n\n")
 
-gs6 = GridSearchCV(estimator=pipe6, param_grid=param_grid, scoring='accuracy', cv=5, n_jobs=-1)
+gs6 = GridSearchCV(estimator=pipe6, param_grid=speed_grid, scoring='accuracy', cv=5, n_jobs=-1)
 gs6.fit(X_train, y_train)
 print("\n\n\n")
 print("\ngs6.best_score_:")

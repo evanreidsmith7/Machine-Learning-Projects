@@ -1,7 +1,7 @@
 #************************************************************************************
 # Evan Smith
 # ML – HW#3
-# Filename: hw3-logreg.py
+# Filename: hw3-perceptron.py
 # Due: , 2023
 #
 # Objective:
@@ -24,14 +24,14 @@ from sklearn.pipeline import Pipeline, make_pipeline
 from sklearn.model_selection import StratifiedKFold
 from sklearn.decomposition import KernelPCA
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
-from sklearn.linear_model import LogisticRegression
+from sklearn.linear_model import Perceptron
 import seaborn as sns
 #from mlxtend.plotting import plot_decision_regions
 
 ##########################################################################################################################
 # Data Preprocessing
 ###########################################################################################################################
-
+# Set the path to the main directory containing subdirectories with CSV files
 main_directory = r'Datasets/Measurements_Upload/'
 
 
@@ -45,7 +45,8 @@ paths = [
 ]
 
 # Number of subdirectories to traverse (you can adjust this as needed)
-num_subdirectories_to_traverse = 50  # Set to None to traverse all subdirectories
+num_subdirectories_to_traverse = 10  # Set to None to traverse all subdirectories
+debugfile = 'Part2/results/'+str(num_subdirectories_to_traverse) + 'debugresults.txt'
 
 # Function to process a directory and return combined data
 def process_directory(directory_path, label):
@@ -106,107 +107,79 @@ y_encoded = le.fit_transform(y)
 
 # Split the data into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.2, random_state=42)
+
+
 ##########################################################################################################################
 # PIPELINES
 ###########################################################################################################################
 # Create a pipeline
-###########################################################################################################################
-###########################################################################################################################
-###########################################################################################################################
 pipe1 = Pipeline([
     ('scaler', StandardScaler()),
     ('reduce_dim', PCA()),  # You can change this to LDA or other dimensionality reduction techniques
-    ('classifier', LogisticRegression())
+    ('classifier', Perceptron())  # Change the classifier to Perceptron
 ])
-param_grid1 = {
-    'reduce_dim__n_components': [1, 2, 3],  # Number of components for PCA
-    'classifier__penalty': ['l1', 'l2'],  # Regularization penalty (L1 or L2)
-    'classifier__C': [0.01, 0.1, 1.0, 10.0],  # Inverse of regularization strength
-    'classifier__solver': ['sag', 'saga'],  # Solver algorithms
-    'classifier__max_iter': [100, 250, 500]  # Maximum number of iterations
-}
 
 pipe2 = Pipeline([
     ('scaler', StandardScaler()),
     ('reduce_dim', LDA()),  # You can change this to LDA or other dimensionality reduction techniques
-    ('classifier', LogisticRegression())
+    ('classifier', Perceptron())
 ])
-param_grid2 = {
-    'reduce_dim__n_components': [1, 2, 3],  # Number of components for LDA
-    'classifier__penalty': ['l1', 'l2'],  # Regularization penalty (L1 or L2)
-    'classifier__C': [0.01, 0.1, 1.0, 10.0],  # Inverse of regularization strength
-    'classifier__solver': ['sag', 'saga'],  # Solver algorithms
-    'classifier__max_iter': [100, 250, 500]  # Maximum number of iterations
-}
 
 pipe3 = Pipeline([
     ('scaler', StandardScaler()),
-    ('reduce_dim', KernelPCA(kernel='rbf')),  # You can change this to LDA or other dimensionality reduction techniques
-    ('classifier', LogisticRegression())
+    ('reduce_dim', PCA()),  # You can change this to LDA or other dimensionality reduction techniques
+    ('classifier', Perceptron())
 ])
-param_grid3 = {
-    'reduce_dim__n_components': [1, 2, 3],  # Number of components for LDA
-    'classifier__penalty': ['l1', 'l2'],  # Regularization penalty (L1 or L2)
-    'classifier__C': [0.01, 0.1, 1.0, 10.0],  # Inverse of regularization strength
-    'classifier__solver': ['sag', 'saga'],  # Solver algorithms
-    'classifier__max_iter': [100, 250, 500]  # Maximum number of iterations
-}
 
 pipe4 = Pipeline([
     ('scaler', MinMaxScaler()),
     ('reduce_dim', PCA()),  # You can change this to LDA or other dimensionality reduction techniques
-    ('classifier', LogisticRegression())
+    ('classifier', Perceptron())
 ])
-param_grid4 = {
-    'reduce_dim__n_components': [1, 2, 3],  # Number of components for PCA
-    'classifier__penalty': ['l1', 'l2'],  # Regularization penalty (L1 or L2)
-    'classifier__C': [0.01, 0.1, 1.0, 10.0],  # Inverse of regularization strength
-    'classifier__solver': ['sag', 'saga'],  # Solver algorithms
-    'classifier__max_iter': [100, 250, 500]  # Maximum number of iterations
-}
 
 pipe5 = Pipeline([
     ('scaler', MinMaxScaler()),
     ('reduce_dim', LDA()),  # You can change this to LDA or other dimensionality reduction techniques
-    ('classifier', LogisticRegression())
+    ('classifier', Perceptron())
 ])
-param_grid5 = {
-    'reduce_dim__n_components': [1, 2],  # Number of components for LDA
-    'classifier__penalty': ['l1', 'l2'],  # Regularization penalty (L1 or L2)
-    'classifier__C': [0.01, 0.1, 1.0, 10.0],  # Inverse of regularization strength
-    'classifier__solver': ['sag', 'saga'],  # Solver algorithms
-    'classifier__max_iter': [100, 250, 500]  # Maximum number of iterations
-}
 
 pipe6 = Pipeline([
     ('scaler', MinMaxScaler()),
-    ('reduce_dim', KernelPCA(kernel='rbf')),  # You can change this to LDA or other dimensionality reduction techniques
-    ('classifier', LogisticRegression())
+    ('reduce_dim', PCA()),  # You can change this to LDA or other dimensionality reduction techniques
+    ('classifier', Perceptron())
 ])
-param_grid6 = {
-    'reduce_dim__n_components': [1, 2, 3],  # Number of components for LDA
-    'classifier__penalty': ['l1', 'l2'],  # Regularization penalty (L1 or L2)
-    'classifier__C': [0.01, 0.1, 1.0, 10.0],  # Inverse of regularization strength
-    'classifier__solver': ['sag','lbfgs', 'saga'],  # Solver algorithms
-    'classifier__max_iter': [100, 250, 500]  # Maximum number of iterations
+
+param_grid = {
+    'reduce_dim__n_components': [1, 2, 3],  # Number of components for PCA
+    'classifier__penalty': [None, 'l2', 'l1'],  # Regularization penalty (L2, L1, or None)
+    'classifier__alpha': [0.0001, 0.001, 0.01, 0.1],  # Regularization strength (alpha)
+    'classifier__max_iter': [100, 250],  # Maximum number of iterations
+    'classifier__tol': [1e-3, 1e-4, 1e-5],  # Tolerance for stopping criterion
 }
+speed_grid = {
+    'reduce_dim__n_components': [1],  # Number of components for PCA
+    'classifier__penalty': [None,'l1'],  # Regularization penalty (L2, L1, or None)
+    'classifier__alpha': [0.1],  # Regularization strength (alpha)
+    'classifier__max_iter': [100],  # Maximum number of iterations
+    'classifier__tol': [1e-3],  # Tolerance for stopping criterion
+}
+
 ##########################################################################################################################
-# Grid Search
-##########################################################################################################################
-gs = GridSearchCV(estimator=pipe5, param_grid=param_grid5, scoring='accuracy', cv=5, n_jobs=-1)
-gs.fit(X_train, y_train)
-print("\n\n\n")
-print("\ngs1.best_score_:")
-print(gs.best_score_)
-print("\ngs1.best_params_:")
-print(gs.best_params_)
-print("\ngs1.best_estimator_:")
-print(gs.best_estimator_)
-print("\n\n\n")
-best_model = gs.best_estimator_
-best_params = gs.best_params_
+# GridSearchCV
 '''
-gs1 = GridSearchCV(estimator=pipe1, param_grid=param_grid1, scoring='accuracy', cv=5, n_jobs=-1)
+gs = GridSearchCV(estimator=pipe_svc,
+ ... param_grid=param_grid,
+ ... scoring='accuracy',
+ ... cv=10,
+ ... n_jobs=-1)
+gs = gs.fit(X_train, y_train)
+print(gs.best_score_)
+0.984615384615
+print(gs.best_params_)
+'''
+##########################################################################################################################
+
+gs1 = GridSearchCV(estimator=pipe1, param_grid=param_grid, scoring='accuracy', cv=5, n_jobs=-1)
 gs1.fit(X_train, y_train)
 print("\n\n\n")
 print("\ngs1.best_score_:")
@@ -217,7 +190,7 @@ print("\ngs1.best_estimator_:")
 print(gs1.best_estimator_)
 print("\n\n\n")
 
-gs2 = GridSearchCV(estimator=pipe2, param_grid=param_grid2, scoring='accuracy', cv=5, n_jobs=-1)
+gs2 = GridSearchCV(estimator=pipe2, param_grid=param_grid, scoring='accuracy', cv=5, n_jobs=-1)
 gs2.fit(X_train, y_train)
 print("\n\n\n")
 print("\ngs2.best_score_:")
@@ -228,7 +201,7 @@ print("\ngs2.best_estimator_:")
 print(gs2.best_estimator_)
 print("\n\n\n")
 
-gs3 = GridSearchCV(estimator=pipe3, param_grid=param_grid3, scoring='accuracy', cv=5, n_jobs=-1)
+gs3 = GridSearchCV(estimator=pipe3, param_grid=speed_grid, scoring='accuracy', cv=5, n_jobs=-1)
 gs3.fit(X_train, y_train)
 print("\n\n\n")
 print("\ngs3.best_score_:")
@@ -239,7 +212,7 @@ print("\ngs3.best_estimator_:")
 print(gs3.best_estimator_)
 print("\n\n\n")
 
-gs4 = GridSearchCV(estimator=pipe4, param_grid=param_grid4, scoring='accuracy', cv=5, n_jobs=-1)
+gs4 = GridSearchCV(estimator=pipe4, param_grid=param_grid, scoring='accuracy', cv=5, n_jobs=-1)
 gs4.fit(X_train, y_train)
 print("\n\n\n")
 print("\ngs4.best_score_:")
@@ -250,7 +223,7 @@ print("\ngs4.best_estimator_:")
 print(gs4.best_estimator_)
 print("\n\n\n")
 
-gs5 = GridSearchCV(estimator=pipe5, param_grid=param_grid5, scoring='accuracy', cv=5, n_jobs=-1)
+gs5 = GridSearchCV(estimator=pipe5, param_grid=param_grid, scoring='accuracy', cv=5, n_jobs=-1)
 gs5.fit(X_train, y_train)
 print("\n\n\n")
 print("\ngs5.best_score_:")
@@ -261,7 +234,7 @@ print("\ngs5.best_estimator_:")
 print(gs5.best_estimator_)
 print("\n\n\n")
 
-gs6 = GridSearchCV(estimator=pipe6, param_grid=param_grid6, scoring='accuracy', cv=5, n_jobs=-1)
+gs6 = GridSearchCV(estimator=pipe6, param_grid=speed_grid, scoring='accuracy', cv=5, n_jobs=-1)
 gs6.fit(X_train, y_train)
 print("\n\n\n")
 print("\ngs6.best_score_:")
@@ -271,6 +244,7 @@ print(gs6.best_params_)
 print("\ngs6.best_estimator_:")
 print(gs6.best_estimator_)
 print("\n\n\n")
+
 ##########################################################################################################################
 # find best model
 ###########################################################################################################################
@@ -289,31 +263,72 @@ best_index = np.argmax([best_score1, best_score2, best_score3, best_score4, best
 
 # Set best_model to the best estimator from the grid search with the highest score
 if best_index == 0:
-    g = "gs1"
+    y_prob = gs1.best_estimator_.decision_function(X_test)
     best_model = gs1.best_estimator_
     best_params = gs1.best_params_
+    best_model_dimreduce = gs1.best_estimator_['reduce_dim']
+    best_model_scaler = gs1.best_estimator_['scaler']
+    best_model_dimreduce_components = gs1.best_estimator_['reduce_dim'].n_components
+    plotmodel = gs1.best_estimator_['classifier']
 elif best_index == 1:
-    g = "gs2"
+    y_prob = gs2.best_estimator_.decision_function(X_test)
     best_model = gs2.best_estimator_
-    best_params = gs2.best_params_    
+    best_params = gs2.best_params_
+    best_model_dimreduce = gs2.best_estimator_['reduce_dim']
+    best_model_scaler = gs2.best_estimator_['scaler']
+    best_model_dimreduce_components = gs2.best_estimator_['reduce_dim'].n_components    
+    plotmodel = gs2.best_estimator_['classifier']
 elif best_index == 2:
-    g = "gs3"
+    y_prob = gs3.best_estimator_.decision_function(X_test)(X_test)
     best_model = gs3.best_estimator_
     best_params = gs3.best_params_
+    best_model_dimreduce = gs3.best_estimator_['reduce_dim']
+    best_model_scaler = gs3.best_estimator_['scaler']
+    best_model_dimreduce_components = gs3.best_estimator_['reduce_dim'].n_components
+    plotmodel = gs3.best_estimator_['classifier']
 elif best_index == 3:
-    g = "gs4"
+    y_prob = gs4.best_estimator_.decision_function(X_test)(X_test)
     best_model = gs4.best_estimator_
     best_params = gs4.best_params_
+    best_model_dimreduce = gs4.best_estimator_['reduce_dim']
+    best_model_scaler = gs4.best_estimator_['scaler']
+    best_model_dimreduce_components = gs4.best_estimator_['reduce_dim'].n_components
+    plotmodel = gs4.best_estimator_['classifier']
 elif best_index == 4:
-    g = "gs5"
+    y_prob = gs5.best_estimator_.decision_function(X_test)(X_test)
     best_model = gs5.best_estimator_
     best_params = gs5.best_params_
+    best_model_dimreduce = gs5.best_estimator_['reduce_dim']
+    best_model_scaler = gs5.best_estimator_['scaler']
+    best_model_dimreduce_components = gs5.best_estimator_['reduce_dim'].n_components
+    plotmodel = gs5.best_estimator_['classifier']
 else:
-    g = "gs6"
+    y_prob = gs6.best_estimator_.decision_function(X_test)(X_test)
     best_model = gs6.best_estimator_
     best_params = gs6.best_params_
+    best_model_dimreduce = gs6.best_estimator_['reduce_dim']
+    best_model_scaler = gs6.best_estimator_['scaler']
+    best_model_dimreduce_components = gs6.best_estimator_['reduce_dim'].n_components
+    plotmodel = gs6.best_estimator_['classifier']
+###############################################
+##################DEBUG########################
+###############################################
+print("\n\n\n")
+print("\nbest_model:")
+print(best_model)
+print("\nbest_model_dimreduce:")
+print(best_model_dimreduce)
+print("\nbest_model_scaler:")
+print(best_model_scaler)
+print("\nbest_model_dimreduce_components:")
+print(best_model_dimreduce_components)
+print("\n\n\n")
+###############################################
+##################DEBUG########################
+###############################################
 
-'''
+
+
 # Make predictions on the test data
 y_pred_train = best_model.predict(X_train)
 y_pred = best_model.predict(X_test)
@@ -324,7 +339,7 @@ accuracy = accuracy_score(y_test, y_pred)
 precision = precision_score(y_test, y_pred, average='weighted')
 recall = recall_score(y_test, y_pred, average='weighted')
 f1 = f1_score(y_test, y_pred, average='weighted')
-
+print("\n\n\n\n")
 print(f"\n\n\n\nBest Model Train Accuracy: {train_accuracy:.2f}")
 print(f"Best Model Test Accuracy: {accuracy:.2f}")
 print(f"Precision: {precision:.2f}\n")
@@ -334,18 +349,16 @@ print("best_model")
 print(best_model)
 print("best_params:")
 print(best_params)
-print("\n\n\n")
+print("\n\n\n\n")
 print(X.shape)
 print(y_encoded.shape)
-
-
 ##########################################################################################################################
 # txt file
 ###########################################################################################################################
 
 # print to a txt file
-with open('Part1/results/tuning/resultspipe5.txt', 'w') as file:
-    file.write(f"Best Model Train Accuracy: {train_accuracy:.2f}")
+with open(debugfile, 'w') as file:
+    file.write(f"\nBest Model Train Accuracy: {train_accuracy:.2f}")
     file.write(f"\nBest Model Test Accuracy: {accuracy:.2f}")
     file.write(f"\nPrecision: {precision:.2f}\n")
     file.write(f"\nRecall: {recall:.2f}\n")

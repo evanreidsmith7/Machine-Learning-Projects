@@ -47,7 +47,8 @@ paths = [
 ]
 
 # Number of subdirectories to traverse (you can adjust this as needed)
-num_subdirectories_to_traverse = 300  # Set to None to traverse all subdirectories
+num_subdirectories_to_traverse = 10  # Set to None to traverse all subdirectories
+debugfile = 'Part1/results/'+str(num_subdirectories_to_traverse) + 'debugresults.txt'
 
 # Function to process a directory and return combined data
 def process_directory(directory_path, label):
@@ -189,6 +190,14 @@ param_grid6 = {
     'classifier__solver': ['sag','lbfgs', 'saga'],  # Solver algorithms
     'classifier__max_iter': [100, 250, 500]  # Maximum number of iterations
 }
+
+speed_grid = {    
+    'reduce_dim__n_components': [1],  # Number of components for LDA
+    'classifier__penalty': [None, 'l2'],  # Regularization penalty (L1 or L2)
+    'classifier__C': [0.01],  # Inverse of regularization strength
+    'classifier__solver': ['sag'],  # Solver algorithms
+    'classifier__max_iter': [100]  # Maximum number of iterations
+}
 ##########################################################################################################################
 # Grid Search
 ##########################################################################################################################
@@ -215,7 +224,7 @@ print("\ngs2.best_estimator_:")
 print(gs2.best_estimator_)
 print("\n\n\n")
 
-gs3 = GridSearchCV(estimator=pipe3, param_grid=param_grid3, scoring='accuracy', cv=5, n_jobs=-1)
+gs3 = GridSearchCV(estimator=pipe3, param_grid=speed_grid, scoring='accuracy', cv=5, n_jobs=-1)
 gs3.fit(X_train, y_train)
 print("\n\n\n")
 print("\ngs3.best_score_:")
@@ -248,7 +257,7 @@ print("\ngs5.best_estimator_:")
 print(gs5.best_estimator_)
 print("\n\n\n")
 
-gs6 = GridSearchCV(estimator=pipe6, param_grid=param_grid6, scoring='accuracy', cv=5, n_jobs=-1)
+gs6 = GridSearchCV(estimator=pipe6, param_grid=speed_grid, scoring='accuracy', cv=5, n_jobs=-1)
 gs6.fit(X_train, y_train)
 print("\n\n\n")
 print("\ngs6.best_score_:")
@@ -323,7 +332,7 @@ print(y_encoded.shape)
 ###########################################################################################################################
 
 # print to a txt file
-with open('Part1/TestScripts/Results/datagsresults300f.txt', 'w') as file:
+with open(debugfile, 'w') as file:
     file.write(f"\nBest Model Train Accuracy: {train_accuracy:.2f}")
     file.write(f"\nBest Model Test Accuracy: {accuracy:.2f}")
     file.write(f"\nPrecision: {precision:.2f}\n")
