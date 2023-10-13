@@ -81,7 +81,7 @@ for path in paths:
 
 # Concatenate all dataframes into one
 combined_data = pd.concat(data_frames, ignore_index=True)
-print(combined_data)
+
 
 #combined_data.to_csv("Datasets/combined_data_all.csv", index=False)
 
@@ -110,71 +110,33 @@ le = LabelEncoder()
 y_encoded = le.fit_transform(y)
 
 # Split the data into training and testing sets
-X_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y_encoded, test_size=0.2,train_size=0.8, random_state=42)
 
 print("\n\n\n\n\n\n\n\n\npreprocessing complete\n\n\n\n\n\n\n")
 print("\n\n\n\n\n\nsetting up models...\n\n\n\n")
 ####GRID SEARCH FOR SUBMISSION############################################################################
-####PERCEPTRON############################################################################
-ppn_param_grid = {
-    'reduce_dim__n_components': [1, 2, 3],  # Number of components for PCA
-    'classifier__penalty': [None, 'l2', 'l1'],  # Regularization penalty (L2, L1, or None)
-    'classifier__alpha': [0.0001, 0.001, 0.01, 0.1],  # Regularization strength (alpha)
-    'classifier__max_iter': [100, 250],  # Maximum number of iterations
-    'classifier__tol': [1e-3, 1e-4, 1e-5],  # Tolerance for stopping criterion
-}
-ppn_pipe = Pipeline([
-    ('scaler', StandardScaler()),
-    ('reduce_dim', PCA()),  # You can change this to LDA or other dimensionality reduction techniques
-    ('classifier', Perceptron())  # Change the classifier to Perceptron
-])
-ppn_gs = GridSearchCV(estimator=ppn_pipe, param_grid=ppn_param_grid, scoring='accuracy', cv=5, n_jobs=-1)
-ppn_gs.fit(X_train, y_train)
-ppn = ppn_gs.best_estimator_
-####PERCEPTRON############################################################################
-####LOGISTIC REGRESSION###################################################################
-lr_pipe = Pipeline([
-    ('scaler', StandardScaler()),
-    ('reduce_dim', LDA()),  # You can change this to LDA or other dimensionality reduction techniques
-    ('classifier', LogisticRegression())
-])
-lr_param_grid = {
-    'reduce_dim__n_components': [1, 2, 3],  # Number of components for LDA
-    'classifier__penalty': [None, 'l2'],  # Regularization penalty (L1 or L2)
-    'classifier__C': [0.01, 0.1, 1.0, 10.0],  # Inverse of regularization strength
-    'classifier__solver': ['sag','lbfgs', 'saga'],  # Solver algorithms
-    'classifier__max_iter': [100, 250, 500]  # Maximum number of iterations
-}
-lr_gs = GridSearchCV(estimator=lr_pipe, param_grid=lr_param_grid, scoring='accuracy', cv=5, n_jobs=-1)
-lr_gs.fit(X_train, y_train)
-lr = lr_gs.best_estimator_
-#####LOGISTIC REGRESSION###################################################################
-####GRID SEARCH FOR SUBMISSION############################################################################
-
-
-
-####REGULAR PIPE FOR TESTING##############################################################################
-'''
 ####PERCEPTRON############################################################################
 ppn = Pipeline(steps=[('scaler', StandardScaler()),
                 ('reduce_dim', LDA(n_components=3)),
                 ('classifier',
                  Perceptron(alpha=0.001, max_iter=100, penalty='l1',
                             tol=0.0001))])
+ppn.fit(X_train, y_train)
 ####PERCEPTRON############################################################################
 ####LOGISTIC REGRESSION###################################################################
-lr = Pipeline(steps=[('scaler', MinMaxScaler()),
-                ('reduce_dim', LDA(n_components=3)),
-                ('classifier',
-                 LogisticRegression(C=0.01, penalty='l1', solver='saga'))])
-####LOGISTIC REGRESSION###################################################################
-'''
+lr = Pipeline([
+    ('scaler', StandardScaler()),
+    ('reduce_dim', LDA(n_components=3)),  # You can change this to LDA or other dimensionality reduction techniques
+    ('classifier', LogisticRegression(c=10, solver='sag'))
+])
+lr.fit(X_train, y_train)
+#####LOGISTIC REGRESSION###################################################################
 ####DTREE#################################################################################
 dtree = Pipeline(steps=[('classifier',
                  DecisionTreeClassifier(criterion='entropy',
                                         max_features='log2'))])
+dtree.fit(X_train, y_train)
 ####DTREE#################################################################################
-####REGULAR PIPE FOR TESTING##############################################################################
 
 
 
@@ -187,7 +149,6 @@ ensemble = VotingClassifier(estimators=[('lr', lr), ('ppn', ppn), ('dtree', dtre
 # Define a parameter grid for the weights
 my_clf_param_grid = {
     'weights': [
-        [1, 1, 1],  # Equal weights
         [2, 1, 3],  # Assigning higher weight to the lr
         [1, 1, 3],  # d tree bias
         [2, 1, 4]

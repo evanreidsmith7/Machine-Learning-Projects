@@ -54,7 +54,7 @@ def plotDecisionRegions(name,X, y, classifier, resolution=0.02):
 
     plt.title("{} Decision Regions".format(name))
     plt.legend()
-    plt.savefig("Part1/results/{}_Decision_Regions.png".format(name))
+    plt.savefig("Part1/TestScripts/Results/{}_Decision_Regions.png".format(name))
     plt.close()
 # PLOT FUNC################################################################################################################
 ###########################################################################################################################
@@ -192,61 +192,6 @@ y_pred = best_model.predict(X_test)
 ###########################################################################################################################
 # PLOT CALL################################################################################################################
 ###################################################################################################PCA SC##################
-'''
-
-if type(best_model['reduce_dim']) == PCA() and type(best_model['scaler'] == StandardScaler()):
-    print("PCA SC")
-    # find the number of components used by the reduce dim of the best model
-    n_components = best_model['reduce_dim'].n_components
-
-    sc = StandardScaler()
-    pca = PCA(n_components=n_components)
-
-    X_train_plt = sc.fit_transform(X_train)
-    X_test_plt = sc.transform(X_test)
-    X_train_plt = pca.fit_transform(X_train_plt)
-    X_test_plt = pca.transform(X_test_plt)
-###################################################################################################PCA MMS##################
-if type(best_model['reduce_dim']) == PCA() and type(best_model['scaler'] == MinMaxScaler()):
-    print("PCA MMS")
-    # find the number of components used by the reduce dim of the best model
-    n_components = best_model['reduce_dim'].n_components
-
-    mms = MinMaxScaler()
-    pca = PCA(n_components=n_components)
-
-    X_train_plt = mms.fit_transform(X_train)
-    X_test_plt = mms.transform(X_test)
-    X_train_plt = pca.fit_transform(X_train_plt)
-    X_test_plt = pca.transform(X_test_plt)
-###################################################################################################LDA SC##################
-if type(best_model['reduce_dim']) == LDA() and type(best_model['scaler'] == StandardScaler()):
-    print("LDA SC")
-    # find the number of components used by the reduce dim of the best model
-    n_components = best_model['reduce_dim'].n_components
-
-    sc = StandardScaler()
-    lda = LDA(n_components=n_components)
-
-    X_train_plt = sc.fit_transform(X_train)
-    X_test_plt = sc.transform(X_test)
-    X_train_plt = lda.fit_transform(X_train_plt)
-    X_test_plt = lda.transform(X_test_plt)
-###################################################################################################LDA MMS##################
-if type(best_model['reduce_dim']) == LDA() and type(best_model['scaler'] == MinMaxScaler()):
-    print("LDA MMS")
-    # find the number of components used by the reduce dim of the best model
-    n_components = best_model['reduce_dim'].n_components
-
-    mms = MinMaxScaler()
-    lda = LDA(n_components=n_components)
-
-    X_train_plt = mms.fit_transform(X_train)
-    X_test_plt = mms.transform(X_test)
-    X_train_plt = lda.fit_transform(X_train_plt)
-    X_test_plt = lda.transform(X_test_plt)
-'''
-
 ############################################################################
 # Plot the decision region
 ############################################################################
