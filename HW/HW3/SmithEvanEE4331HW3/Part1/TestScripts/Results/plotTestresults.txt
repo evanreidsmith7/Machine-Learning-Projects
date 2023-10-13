@@ -1,7 +1,0 @@
-
-
-
-
-5 Train Accuracy: 0.395 Test Accuracy: 0.395 Precision: 0.29
-5 Recall: 0.39
-5 F1: 0.33
