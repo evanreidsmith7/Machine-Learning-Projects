@@ -1,0 +1,1443 @@
+Starting at Fri Oct 13 19:31:37 CDT 2023
+Running on hosts: compute-079
+Running on 1 nodes.
+Running on 20 processors.
+Current working directory is /home/ers131/Machine-Learning-Projects/HW/HW4/SmithEvanEE4331HW4
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ec00400>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ec004a0>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebc8f40>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Exception ignored on calling ctypes callback function: <function _ThreadpoolInfo._find_modules_with_dl_iterate_phdr.<locals>.match_module_callback at 0x7f793ebf8540>
+Traceback (most recent call last):
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 400, in match_module_callback
+    self._make_module_from_path(filepath)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 515, in _make_module_from_path
+    module = module_class(filepath, prefix, user_api, internal_api)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 606, in __init__
+    self.version = self.get_version()
+                   ^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/threadpoolctl.py", line 646, in get_version
+    config = get_config().split()
+             ^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'split'
+Data Preprocessing...
+       AT      AP      AH    AFDP  ...     TEY     CDP       CO     NOX
+0  4.5878  1018.7  83.675  3.5758  ...  134.67  11.898  0.32663  81.952
+1  4.2932  1018.3  84.235  3.5709  ...  134.67  11.892  0.44784  82.377
+2  3.9045  1018.4  84.858  3.5828  ...  135.10  12.042  0.45144  83.776
+3  3.7436  1018.3  85.434  3.5808  ...  135.03  11.990  0.23107  82.505
+4  3.7516  1017.8  85.182  3.5781  ...  134.67  11.910  0.26747  82.028
+
+[5 rows x 11 columns]
+Data Preprocessing done.
+Determining the number of centroids by using the Elbow Method...
+done.
+plotting distortions...
+Traceback (most recent call last):
+  File "/gpfs/home/ers131/Machine-Learning-Projects/HW/HW4/SmithEvanEE4331HW4/Part1/hw4-part1.py", line 72, in <module>
+    plt.savefig(distortion_clusters_file_path)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/matplotlib/pyplot.py", line 1023, in savefig
+    res = fig.savefig(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/matplotlib/figure.py", line 3343, in savefig
+    self.canvas.print_figure(fname, **kwargs)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/matplotlib/backend_bases.py", line 2366, in print_figure
+    result = print_method(
+             ^^^^^^^^^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/matplotlib/backend_bases.py", line 2232, in <lambda>
+    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
+                                                                 ^^^^^
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/matplotlib/backends/backend_agg.py", line 509, in print_png
+    self._print_pil(filename_or_obj, "png", pil_kwargs, metadata)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/matplotlib/backends/backend_agg.py", line 458, in _print_pil
+    mpl.image.imsave(
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/matplotlib/image.py", line 1689, in imsave
+    image.save(fname, **pil_kwargs)
+  File "/home/ers131/miniconda3/lib/python3.11/site-packages/PIL/Image.py", line 2428, in save
+    fp = builtins.open(filename, "w+b")
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'Results/distortion_clusters.png'
+Program finished with exit code 1 at: Fri Oct 13 19:31:54 CDT 2023
