@@ -34,6 +34,7 @@ csv_file_path_2015 = "Dataset/gt_2015.csv"
 distortion_clusters_file_path = "Part1/Results/distortion_clusters.png"
 
 clusters_file_path_2011 = "Part1/Results/2011clusters.png"
+clusters_file_path_2011a = "Part1/Results/2011clusters_a.png"
 clusters_file_path_2012 = "Part1/Results/2012clusters.png"
 clusters_file_path_2013 = "Part1/Results/2013clusters.png"
 clusters_file_path_2014 = "Part1/Results/2014clusters.png"
@@ -71,8 +72,10 @@ for i in range(1, 11):
                 max_iter=300,
                 random_state=0)
     km.fit(df_2011[1:])
+    print("\n"+ str(distortions)+"\n")
     distortions.append(km.inertia_)
 
+print(distortions)
 ##########################################################################################################################
 print("done.")
 # plot the distortion
@@ -97,7 +100,14 @@ X_std = sc.fit_transform(X_2011)
 
 pca = PCA(n_components=2)
 X_pca_2011 = pca.fit_transform(X_std)
+km = KMeans(n_clusters=3,
+                init='k-means++',
+                n_init=10,
+                max_iter=300,
+                random_state=42)
+
 y_km = km.fit_predict(X_pca_2011)
+print("\n\n" + str(km.inertia_)) 
 
 plt.scatter(X_pca_2011[y_km == 0, 0],
             X_pca_2011[y_km == 0, 1],
@@ -113,7 +123,7 @@ plt.scatter(X_pca_2011[y_km == 2, 0],
             X_pca_2011[y_km == 2, 1],
             s=10, c='lightblue',
             marker='v', edgecolor='black',
-            label='cluster 2')
+            label='cluster 3')
 plt.scatter(km.cluster_centers_[:, 0],
             km.cluster_centers_[:, 1],
             s=25, marker='*',
@@ -122,6 +132,61 @@ plt.scatter(km.cluster_centers_[:, 0],
 plt.legend(scatterpoints=1)
 plt.grid()
 plt.savefig(clusters_file_path_2011)
+plt.close()
+
+
+
+
+
+
+##########################################################################################################################
+print("done.")
+# plot the clusters
+print("plotting clusters...")
+##########################################################################################################################
+
+km = KMeans(n_clusters=5,
+                init='k-means++',
+                n_init=10,
+                max_iter=300,
+                random_state=42)
+
+y_km = km.fit_predict(X_pca_2011)
+print("\n\n" + str(km.inertia_)) 
+
+plt.scatter(X_pca_2011[y_km == 0, 0],
+            X_pca_2011[y_km == 0, 1],
+            s=10, c='lightgreen',
+            marker='s', edgecolor='black',
+            label='cluster 1')
+plt.scatter(X_pca_2011[y_km == 1, 0],
+            X_pca_2011[y_km == 1, 1],
+            s=10, c='orange',
+            marker='o', edgecolor='black',
+            label='cluster 2')
+plt.scatter(X_pca_2011[y_km == 2, 0],
+            X_pca_2011[y_km == 2, 1],
+            s=10, c='lightblue',
+            marker='v', edgecolor='black',
+            label='cluster 3')
+plt.scatter(X_pca_2011[y_km == 3, 0],
+            X_pca_2011[y_km == 3, 1],
+            s=10, c='orange',
+            marker='o', edgecolor='black',
+            label='cluster 4')
+plt.scatter(X_pca_2011[y_km == 4, 0],
+            X_pca_2011[y_km == 4, 1],
+            s=10, c='red',
+            marker='v', edgecolor='black',
+            label='cluster 5')
+plt.scatter(km.cluster_centers_[:, 0],
+            km.cluster_centers_[:, 1],
+            s=25, marker='*',
+            c='red', edgecolor='black',
+            label='centroids')
+plt.legend(scatterpoints=1)
+plt.grid()
+plt.savefig(clusters_file_path_2011a)
 plt.close()
 ##########################################################################################################################
 print("done.")
