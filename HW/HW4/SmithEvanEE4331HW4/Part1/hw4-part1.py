@@ -13,10 +13,12 @@
 #  Determine the distortion score and save it to a text file for each individual year
 #*************************************************************************************
 # Import libraries
-import os
 from matplotlib import pyplot as plt
 import pandas as pd
 from sklearn.cluster import KMeans
+from sklearn.decomposition import PCA
+from sklearn.discriminant_analysis import StandardScaler
+import numpy as np
 ##########################################################################################################################
 # Data Preprocessing
 print("Data Preprocessing...")
@@ -38,10 +40,10 @@ clusters_file_path_2014 = "Part1/Results/2014clusters.png"
 clusters_file_path_2015 = "Part1/Results/2015clusters.png"
 
 silhouettes_file_path_2011 = "Part1/Results/2011silhoute.png"
-silhouettes_file_path_2011 = "Part1/Results/2012silhoute.png"
-silhouettes_file_path_2011 = "Part1/Results/2013silhoute.png"
-silhouettes_file_path_2011 = "Part1/Results/2014silhoute.png"
-silhouettes_file_path_2011 = "Part1/Results/2015silhoute.png"
+silhouettes_file_path_2012 = "Part1/Results/2012silhoute.png"
+silhouettes_file_path_2013 = "Part1/Results/2013silhoute.png"
+silhouettes_file_path_2014 = "Part1/Results/2014silhoute.png"
+silhouettes_file_path_2015 = "Part1/Results/2015silhoute.png"
 
 
 # Use the pandas.read_csv() function to read the CSV file into a DataFrame
@@ -51,7 +53,9 @@ df_2013 = pd.read_csv(csv_file_path_2013, header=None)
 df_2014 = pd.read_csv(csv_file_path_2014, header=None)
 df_2015 = pd.read_csv(csv_file_path_2015, header=None)
 print(df_2011.head())
+df_2011[1:] = df_2011[1:].astype(float)
 
+X_2011 = np.array(df_2011[1:])   
 
 ##########################################################################################################################
 print("Data Preprocessing done.")
@@ -66,7 +70,7 @@ for i in range(1, 11):
                 n_init=10,
                 max_iter=300,
                 random_state=0)
-    km.fit(df_2011)
+    km.fit(df_2011[1:])
     distortions.append(km.inertia_)
 
 ##########################################################################################################################
@@ -79,9 +83,48 @@ plt.plot(range(1,11), distortions, marker='o')
 plt.xlabel('Number of clusters')
 plt.ylabel('Distortion')
 plt.savefig(distortion_clusters_file_path)
+plt.close()
+
 
 ##########################################################################################################################
 print("done.")
 # plot the clusters
 print("plotting clusters...")
+##########################################################################################################################
+# use pca for 2d plot
+sc = StandardScaler()
+X_std = sc.fit_transform(X_2011)
+
+pca = PCA(n_components=2)
+X_pca_2011 = pca.fit_transform(X_std)
+y_km = km.fit_predict(X_pca_2011)
+
+plt.scatter(X_pca_2011[y_km == 0, 0],
+            X_pca_2011[y_km == 0, 1],
+            s=10, c='lightgreen',
+            marker='s', edgecolor='black',
+            label='cluster 1')
+plt.scatter(X_pca_2011[y_km == 1, 0],
+            X_pca_2011[y_km == 1, 1],
+            s=10, c='orange',
+            marker='o', edgecolor='black',
+            label='cluster 2')
+plt.scatter(X_pca_2011[y_km == 2, 0],
+            X_pca_2011[y_km == 2, 1],
+            s=10, c='lightblue',
+            marker='v', edgecolor='black',
+            label='cluster 2')
+plt.scatter(km.cluster_centers_[:, 0],
+            km.cluster_centers_[:, 1],
+            s=25, marker='*',
+            c='red', edgecolor='black',
+            label='centroids')
+plt.legend(scatterpoints=1)
+plt.grid()
+plt.savefig(clusters_file_path_2011)
+plt.close()
+##########################################################################################################################
+print("done.")
+# plot the silhouettes
+print("plotting silhouettes...")
 ##########################################################################################################################
