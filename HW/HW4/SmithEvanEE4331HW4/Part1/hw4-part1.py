@@ -34,7 +34,7 @@ clusters = [2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 def plot_clusters(X, n_clusters, file_path: str, title: str = 'Clusters'):
     km = KMeans(n_clusters=n_clusters,
-                init='random',
+                init='k-means++',
                 n_init=10,
                 max_iter=300,
                 tol=1e-04,
@@ -69,7 +69,7 @@ def plot_silhouette(X, n_clusters, file_path: str, title: str = 'Silhouette'):
       # plots of individual clusters, to demarcate them clearly.
    plt.ylim([0, len(X) + (n_clusters + 1) * 10])
    clusterer = KMeans(n_clusters=n_clusters,
-                  init='random',
+                  init='k-means++',
                   n_init=10,
                   max_iter=300,
                   tol=1e-04,
@@ -150,6 +150,29 @@ def plot_elbow_method(distortions, title: str, file_path: str):
     plt.close()
 
 ##########################################################################################################################
+
+def get_distortion_score(data, n_clusters):
+   km = KMeans(n_clusters=n_clusters,
+               init='k-means++',
+               n_init=10,
+               max_iter=300,
+               tol=1e-04,
+               random_state=0)
+   km.fit(data)
+   score = km.inertia_
+   return score
+
+##########################################################################################################################
+
+def write_distortion_scores(score1, score2, score3, score4, score5, file_path):
+   with open(file_path, 'w') as file:
+      file.write('2011 Distortion Score: ' + str(score1) + '\n')
+      file.write('2012 Distortion Score: ' + str(score2) + '\n')
+      file.write('2013 Distortion Score: ' + str(score3) + '\n')
+      file.write('2014 Distortion Score: ' + str(score4) + '\n')
+      file.write('2015 Distortion Score: ' + str(score5) + '\n')
+
+##########################################################################################################################
 # Data Preprocessing
 print("Data Preprocessing...")
 ###########################################################################################################################
@@ -180,6 +203,7 @@ silhouettes_file_path_2013 = "Part1/Results/Silhouettes/2013silhoute.png"
 silhouettes_file_path_2014 = "Part1/Results/Silhouettes/2014silhoute.png"
 silhouettes_file_path_2015 = "Part1/Results/Silhouettes/2015silhoute.png"
 
+distortion_score_file_path = "Part1/Results/DistortionScores/distortion_scores.txt"
 
 # Use the pandas.read_csv() function to read the CSV file into a DataFrame
 df_2011 = pd.read_csv(csv_file_path_2011, header=None)
@@ -237,10 +261,15 @@ print("plotting elbows...")
 ##########################################################################################################################
 
 plot_elbow_method(distortions_2011, 'Elbow Method for 2011', elbow_file_path_2011)
+n_clusters_2011 = 4
 plot_elbow_method(distortions_2012, 'Elbow Method for 2012', elbow_file_path_2012)
+n_clusters_2012 = 3
 plot_elbow_method(distortions_2013, 'Elbow Method for 2013', elbow_file_path_2013)
+n_clusters_2013 = 4
 plot_elbow_method(distortions_2014, 'Elbow Method for 2014', elbow_file_path_2014)
+n_clusters_2014 = 3
 plot_elbow_method(distortions_2015, 'Elbow Method for 2015', elbow_file_path_2015)
+n_clusters_2015 = 4
 
 ##########################################################################################################################
 print("done.")
@@ -248,11 +277,11 @@ print("done.")
 print("plotting clusters...")
 ##########################################################################################################################
 
-plot_clusters(X_2011_pca, 4, clusters_file_path_2011, 'Clusters for 2011')
-plot_clusters(X_2012_pca, 3, clusters_file_path_2012, 'Clusters for 2012')
-plot_clusters(X_2013_pca, 4, clusters_file_path_2013, 'Clusters for 2013')
-plot_clusters(X_2014_pca, 3, clusters_file_path_2014, 'Clusters for 2014')
-plot_clusters(X_2015_pca, 4, clusters_file_path_2015, 'Clusters for 2015')
+plot_clusters(X_2011_pca, n_clusters_2011, clusters_file_path_2011, 'Clusters for 2011')
+plot_clusters(X_2012_pca, n_clusters_2012, clusters_file_path_2012, 'Clusters for 2012')
+plot_clusters(X_2013_pca, n_clusters_2013, clusters_file_path_2013, 'Clusters for 2013')
+plot_clusters(X_2014_pca, n_clusters_2014, clusters_file_path_2014, 'Clusters for 2014')
+plot_clusters(X_2015_pca, n_clusters_2015, clusters_file_path_2015, 'Clusters for 2015')
 
 ##########################################################################################################################
 print("done.")
@@ -260,14 +289,32 @@ print("done.")
 print("plotting silhouettes...")
 ##########################################################################################################################
 
-plot_silhouette(X_2011_pca, 4, silhouettes_file_path_2011, 'Silhouette for 2011')
-plot_silhouette(X_2012_pca, 3, silhouettes_file_path_2012, 'Silhouette for 2012')
-plot_silhouette(X_2013_pca, 4, silhouettes_file_path_2013, 'Silhouette for 2013')
-plot_silhouette(X_2014_pca, 3, silhouettes_file_path_2014, 'Silhouette for 2014')
-plot_silhouette(X_2015_pca, 4, silhouettes_file_path_2015, 'Silhouette for 2015')
+plot_silhouette(X_2011_pca, n_clusters_2011, silhouettes_file_path_2011, 'Silhouette for 2011')
+plot_silhouette(X_2012_pca, n_clusters_2012, silhouettes_file_path_2012, 'Silhouette for 2012')
+plot_silhouette(X_2013_pca, n_clusters_2013, silhouettes_file_path_2013, 'Silhouette for 2013')
+plot_silhouette(X_2014_pca, n_clusters_2014, silhouettes_file_path_2014, 'Silhouette for 2014')
+plot_silhouette(X_2015_pca, n_clusters_2015, silhouettes_file_path_2015, 'Silhouette for 2015')
 
 ##########################################################################################################################
 print("done.")
 # get the distortion scores
 print("calculating distortion scores...")
+##########################################################################################################################
+
+score_2011 = get_distortion_score(X_2011_pca, n_clusters_2011)
+score_2012 = get_distortion_score(X_2012_pca, n_clusters_2012)
+score_2013 = get_distortion_score(X_2013_pca, n_clusters_2013)
+score_2014 = get_distortion_score(X_2014_pca, n_clusters_2014)
+score_2015 = get_distortion_score(X_2015_pca, n_clusters_2015)
+
+##########################################################################################################################
+print("done.")
+# get the distortion scores
+print("writing distortion scores...")
+##########################################################################################################################
+
+write_distortion_scores(score_2011, score_2012, score_2013, score_2014, score_2015, distortion_score_file_path)
+
+##########################################################################################################################
+print("\n\n\n\n\n\n\ndone.")
 ##########################################################################################################################
