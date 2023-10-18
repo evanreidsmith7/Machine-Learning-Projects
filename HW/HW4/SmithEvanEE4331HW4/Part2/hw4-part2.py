@@ -247,7 +247,7 @@ print("done.")
 print("plotting clusters...")
 ##########################################################################################################################
 
-plot_clusters(X_all_pca, n_clusters_all, silhouettes_file_path_all, 'Clusters for all')
+plot_clusters(X_all_pca, n_clusters_all, clusters_file_path_all, 'Clusters for all')
 
 ##########################################################################################################################
 print("done.")
