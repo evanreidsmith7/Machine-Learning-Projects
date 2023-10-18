@@ -21,7 +21,7 @@ from sklearn.decomposition import PCA
 from sklearn.discriminant_analysis import StandardScaler
 import numpy as np
 from sklearn.metrics import silhouette_samples, silhouette_score
-
+from kneed import KneeLocator
 ##########################################################################################################################
 # functions
 ###########################################################################################################################
@@ -261,15 +261,29 @@ print("plotting elbows...")
 ##########################################################################################################################
 
 plot_elbow_method(distortions_2011, 'Elbow Method for 2011', elbow_file_path_2011)
-n_clusters_2011 = 4
+k_elbow = KneeLocator(x=range(1, 11), y=distortions_2011, curve='convex', direction='decreasing')
+print("The optimal number of clusters is", k_elbow.elbow)
+n_clusters_2011 = k_elbow.elbow
+
 plot_elbow_method(distortions_2012, 'Elbow Method for 2012', elbow_file_path_2012)
-n_clusters_2012 = 3
+k_elbow = KneeLocator(x=range(1, 11), y=distortions_2012, curve='convex', direction='decreasing')
+print("The optimal number of clusters is", k_elbow.elbow)
+n_clusters_2012 = k_elbow.elbow
+
 plot_elbow_method(distortions_2013, 'Elbow Method for 2013', elbow_file_path_2013)
-n_clusters_2013 = 4
+k_elbow = KneeLocator(x=range(1, 11), y=distortions_2013, curve='convex', direction='decreasing')
+print("The optimal number of clusters is", k_elbow.elbow)
+n_clusters_2013 = k_elbow.elbow
+
 plot_elbow_method(distortions_2014, 'Elbow Method for 2014', elbow_file_path_2014)
-n_clusters_2014 = 3
+k_elbow = KneeLocator(x=range(1, 11), y=distortions_2014, curve='convex', direction='decreasing')
+print("The optimal number of clusters is", k_elbow.elbow)
+n_clusters_2014 = k_elbow.elbow
+
 plot_elbow_method(distortions_2015, 'Elbow Method for 2015', elbow_file_path_2015)
-n_clusters_2015 = 4
+k_elbow = KneeLocator(x=range(1, 11), y=distortions_2015, curve='convex', direction='decreasing')
+print("The optimal number of clusters is", k_elbow.elbow)
+n_clusters_2015 = k_elbow.elbow
 
 ##########################################################################################################################
 print("done.")
