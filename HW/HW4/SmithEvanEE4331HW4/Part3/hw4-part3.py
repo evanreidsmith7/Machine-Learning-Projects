@@ -202,6 +202,7 @@ silhouettes_file_path_all = "Part2/Results/Silhouettes/silhoute.png"
 distortion_score_file_path = "Part3/Results/DistortionScores/distortion_scores.txt"
 '''
 dendrogram_file_path = "Part3/Results/Dendrogram/dendrogram.png"
+dendrogram_file_path_pca = "Part3/Results/Dendrogram/dendrogram_pca.png"
 
 # Use the pandas.read_csv() function to read the CSV file into a DataFrame
 df_2011 = pd.read_csv(csv_file_path_2011, header=None)
@@ -241,8 +242,8 @@ print("Clustering...")
 ###########################################################################################################################
 
 # Use the agglomerative_clustering_dendrogram function to generate the dendrogram
-agglomerative_clustering_dendrogram(X_all, dendrogram_file_path, "Dendrogram for Part 2")
-
+agglomerative_clustering_dendrogram(X_all, dendrogram_file_path, "Dendrogram for dataset")
+agglomerative_clustering_dendrogram(X_all_pca, dendrogram_file_path_pca, "Dendrogram for Part 2")
 ##########################################################################################################################
 print("done")
 ###########################################################################################################################
