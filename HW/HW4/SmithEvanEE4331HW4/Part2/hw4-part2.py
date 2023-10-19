@@ -236,7 +236,7 @@ print("done.")
 print("plotting elbows...")
 ##########################################################################################################################
 
-plot_elbow_method(distortions_all, 'Elbow Method for all', elbow_file_path_all)
+plot_elbow_method(distortions_all, 'Elbow Method for all pca', elbow_file_path_all)
 k_elbow = KneeLocator(x=range(1, 11), y=distortions_all, curve='convex', direction='decreasing')
 print("The optimal number of clusters is", k_elbow.elbow)
 n_clusters_all = k_elbow.elbow
@@ -247,7 +247,7 @@ print("done.")
 print("plotting clusters...")
 ##########################################################################################################################
 
-plot_clusters(X_all_pca, n_clusters_all, clusters_file_path_all, 'Clusters for all')
+plot_clusters(X_all_pca, n_clusters_all, clusters_file_path_all, 'Clusters for pca all')
 
 ##########################################################################################################################
 print("done.")
@@ -255,7 +255,7 @@ print("done.")
 print("plotting silhouettes...")
 ##########################################################################################################################
 
-plot_silhouette(X_all_pca, n_clusters_all, silhouettes_file_path_all, 'Silhouette for all')
+plot_silhouette(X_all_pca, n_clusters_all, silhouettes_file_path_all, 'Silhouette for pca all')
 
 ##########################################################################################################################
 print("done.")

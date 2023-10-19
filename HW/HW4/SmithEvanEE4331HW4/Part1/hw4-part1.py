@@ -260,27 +260,27 @@ print("done.")
 print("plotting elbows...")
 ##########################################################################################################################
 
-plot_elbow_method(distortions_2011, 'Elbow Method for 2011', elbow_file_path_2011)
+plot_elbow_method(distortions_2011, 'Elbow Method for pca 2011', elbow_file_path_2011)
 k_elbow = KneeLocator(x=range(1, 11), y=distortions_2011, curve='convex', direction='decreasing')
 print("The optimal number of clusters is", k_elbow.elbow)
 n_clusters_2011 = k_elbow.elbow
 
-plot_elbow_method(distortions_2012, 'Elbow Method for 2012', elbow_file_path_2012)
+plot_elbow_method(distortions_2012, 'Elbow Method for pca 2012', elbow_file_path_2012)
 k_elbow = KneeLocator(x=range(1, 11), y=distortions_2012, curve='convex', direction='decreasing')
 print("The optimal number of clusters is", k_elbow.elbow)
 n_clusters_2012 = k_elbow.elbow
 
-plot_elbow_method(distortions_2013, 'Elbow Method for 2013', elbow_file_path_2013)
+plot_elbow_method(distortions_2013, 'Elbow Method for pca 2013', elbow_file_path_2013)
 k_elbow = KneeLocator(x=range(1, 11), y=distortions_2013, curve='convex', direction='decreasing')
 print("The optimal number of clusters is", k_elbow.elbow)
 n_clusters_2013 = k_elbow.elbow
 
-plot_elbow_method(distortions_2014, 'Elbow Method for 2014', elbow_file_path_2014)
+plot_elbow_method(distortions_2014, 'Elbow Method for pca 2014', elbow_file_path_2014)
 k_elbow = KneeLocator(x=range(1, 11), y=distortions_2014, curve='convex', direction='decreasing')
 print("The optimal number of clusters is", k_elbow.elbow)
 n_clusters_2014 = k_elbow.elbow
 
-plot_elbow_method(distortions_2015, 'Elbow Method for 2015', elbow_file_path_2015)
+plot_elbow_method(distortions_2015, 'Elbow Method for pca 2015', elbow_file_path_2015)
 k_elbow = KneeLocator(x=range(1, 11), y=distortions_2015, curve='convex', direction='decreasing')
 print("The optimal number of clusters is", k_elbow.elbow)
 n_clusters_2015 = k_elbow.elbow
@@ -291,11 +291,11 @@ print("done.")
 print("plotting clusters...")
 ##########################################################################################################################
 
-plot_clusters(X_2011_pca, n_clusters_2011, clusters_file_path_2011, 'Clusters for 2011')
-plot_clusters(X_2012_pca, n_clusters_2012, clusters_file_path_2012, 'Clusters for 2012')
-plot_clusters(X_2013_pca, n_clusters_2013, clusters_file_path_2013, 'Clusters for 2013')
-plot_clusters(X_2014_pca, n_clusters_2014, clusters_file_path_2014, 'Clusters for 2014')
-plot_clusters(X_2015_pca, n_clusters_2015, clusters_file_path_2015, 'Clusters for 2015')
+plot_clusters(X_2011_pca, n_clusters_2011, clusters_file_path_2011, 'Clusters for pca 2011')
+plot_clusters(X_2012_pca, n_clusters_2012, clusters_file_path_2012, 'Clusters for pca 2012')
+plot_clusters(X_2013_pca, n_clusters_2013, clusters_file_path_2013, 'Clusters for pca 2013')
+plot_clusters(X_2014_pca, n_clusters_2014, clusters_file_path_2014, 'Clusters for pca 2014')
+plot_clusters(X_2015_pca, n_clusters_2015, clusters_file_path_2015, 'Clusters for pca 2015')
 
 ##########################################################################################################################
 print("done.")
@@ -303,11 +303,11 @@ print("done.")
 print("plotting silhouettes...")
 ##########################################################################################################################
 
-plot_silhouette(X_2011_pca, n_clusters_2011, silhouettes_file_path_2011, 'Silhouette for 2011')
-plot_silhouette(X_2012_pca, n_clusters_2012, silhouettes_file_path_2012, 'Silhouette for 2012')
-plot_silhouette(X_2013_pca, n_clusters_2013, silhouettes_file_path_2013, 'Silhouette for 2013')
-plot_silhouette(X_2014_pca, n_clusters_2014, silhouettes_file_path_2014, 'Silhouette for 2014')
-plot_silhouette(X_2015_pca, n_clusters_2015, silhouettes_file_path_2015, 'Silhouette for 2015')
+plot_silhouette(X_2011_pca, n_clusters_2011, silhouettes_file_path_2011, 'Silhouette for pca 2011')
+plot_silhouette(X_2012_pca, n_clusters_2012, silhouettes_file_path_2012, 'Silhouette for pca 2012')
+plot_silhouette(X_2013_pca, n_clusters_2013, silhouettes_file_path_2013, 'Silhouette for pca 2013')
+plot_silhouette(X_2014_pca, n_clusters_2014, silhouettes_file_path_2014, 'Silhouette for pca 2014')
+plot_silhouette(X_2015_pca, n_clusters_2015, silhouettes_file_path_2015, 'Silhouette for pca 2015')
 
 ##########################################################################################################################
 print("done.")
