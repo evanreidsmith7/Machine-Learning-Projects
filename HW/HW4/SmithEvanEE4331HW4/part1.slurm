@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH --job-name=hw4p1
-#SBATCH --partition=shared
+#SBATCH --partition=parallel
 #SBATCH -n 20
 #SBATCH --time=00:30:00
 

@@ -1,0 +1,10 @@
+Starting at Tue Oct 17 21:58:05 CDT 2023
+Running on hosts: compute-047
+Running on 1 nodes.
+Running on 20 processors.
+Current working directory is /home/ers131/Machine-Learning-Projects/HW/HW4/SmithEvanEE4331HW4
+Data Preprocessing...
+Data Preprocessing done.
+Clustering...
+done
+Program finished with exit code 0 at: Tue Oct 17 22:06:47 CDT 2023
