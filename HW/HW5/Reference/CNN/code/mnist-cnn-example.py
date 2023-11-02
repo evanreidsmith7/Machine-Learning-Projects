@@ -64,5 +64,9 @@ predictions = model.predict(test_images)
 test_loss, test_acc = model.evaluate(test_images, test_labels)
 
 print("Test accuracy: %f", test_acc)
+print("Test loss: %f", test_loss)
+
+print("Predictions: ", predictions)
+print("Predictions shape: ", test_labels)
 
 
