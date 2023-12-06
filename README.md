@@ -14,7 +14,6 @@ Model: "sequential"
 | dense_2 (Dense) | (None, 128) | 32896 |
 | dense_3 (Dense) | (None, 5) | 645 |
 
-
 Total params: 810275 (3.09 MB)
 
 Trainable params: 810275 (3.09 MB)
@@ -23,9 +22,9 @@ Non-trainable params: 0 (0.00 Byte)
 
 ## Dataset visualization
 
-![TSNE map of dataset](FinalProject\FinalResults\Dataset\tsne.png)
+![TSNE map of dataset](FinalProject/FinalResults/Dataset/tsne.png)
 
-![UMAP map of dataset](FinalProject\FinalResults\Dataset\umap.png)
+![UMAP map of dataset](FinalProject/FinalResults/Dataset/umap.png)
 
 ## Model Results
 
@@ -46,12 +45,12 @@ train Accuracy: 99.12%
 
 ### Confusion Matrix
 
-![Matrix](FinalProject\FinalResults\ANN\test_confusion_matrix.png)
+![Matrix](FinalProject/FinalResults/ANN/test_confusion_matrix.png)
 
 ### ROC Curve
 
-![ROC](FinalProject\FinalResults\ANN\roc_curve.png)
+![ROC](FinalProject/FinalResults/ANN/roc_curve.png)
 
 ## Accuracy/Loss Plots
 
-![Accuracy](FinalProject\FinalResults\ANN\acc_loss_plot.png)
+![Accuracy](FinalProject/FinalResults/ANN/acc_loss_plot.png)
