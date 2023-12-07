@@ -1,0 +1,26 @@
+\documentclass[tikz,margin=2mm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{shapes, arrows, positioning}
+
+\begin{document}
+
+\begin{tikzpicture}[>=stealth, node distance=1.5cm]
+    % Input layer
+    \foreach \i in {1,...,762}
+        \node[draw, circle] (input\i) at (\i*0.5,0) {};
+
+    % Hidden layers
+    \node[draw, circle, below=of input381] (hidden1) {256};
+    \node[draw, rectangle, below=of hidden1] (dropout) {Dropout};
+    \node[draw, circle, below=of dropout] (hidden2) {128};
+    
+    % Output layer
+    \node[draw, circle, below=of hidden2] (output) {5};
+
+    % Arrows
+    \foreach \i/\j in {input1/hidden1, input762/hidden1, hidden1/dropout, dropout/hidden2, hidden2/output}
+        \draw[->] (\i) -- (\j);
+
+\end{tikzpicture}
+
+\end{document}
